@@ -22,4 +22,4 @@ jobs:
           target_branch: 'gh-pages'
       # push推送
       - name: Send Notification
-        run: curl https://api2.pushdeer.com/message/push?pushkey=${{ secrets.NOTIFICATION_TOKEN }}&text=博客部署成功
+        run: curl https://api.day.app/${{secrets.BARK_TOKEN}}/博客部署通知/已完成部署
