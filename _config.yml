@@ -30,6 +30,8 @@ github_username:
 # Google Analytics
 google_analytics: G-KRRRY4XFPE
 
+permalink: /:title
+
 # Build settings
 theme: minima
 plugins:
