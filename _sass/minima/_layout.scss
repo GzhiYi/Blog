@@ -191,10 +191,6 @@
 .post-list {
   margin-left: 0;
   list-style: none;
-
-  > li {
-    margin-bottom: $spacing-unit;
-  }
 }
 
 .post-meta {
@@ -204,7 +200,6 @@
 
 .post-link {
   display: block;
-  @include relative-font-size(1.5);
 }
 
 
@@ -251,5 +246,24 @@
     @include media-query($on-laptop) {
       @include relative-font-size(1.125);
     }
+  }
+}
+
+/**
+ * Site filter
+ */
+.filter {
+  display: flex;
+  align-items: center;
+  margin-bottom: $spacing-unit;
+  a {
+    display: inline-block;
+  }
+  .split {
+    display: inline-block;
+    width: 1px;
+    height: 16px;
+    background-color: $border;
+    margin: 0 8px;
   }
 }
