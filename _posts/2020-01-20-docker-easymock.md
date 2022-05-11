@@ -7,7 +7,7 @@ categories: 学习
 
 为了方便本地mock接口，需要在本地用docker跑一个easy-mock服务。第一时间想到docker运行，方便管理和使用。基本上是非常简单就可以跑起来的。所以在这记录一下安装easy-mock的步骤，也为了下次更快的安装。
 
-> 假设在目录"/Users/{{用户目录名}}/easymock"存放easy-mock配置。
+> 假设在目录"/Users/用户目录名/easymock"存放easy-mock配置。
 > 当然需要先安装好docker啦，不再赘述。
 
 ## Docker compose文件
@@ -22,7 +22,7 @@ services:
     image: mongo:3.4.1
     volumes:
       # ./data/db 数据库文件存放地址，根据需要修改为本地地址
-      - './data/db:/Users/{{用户目录名}}/easymock/data/db'
+      - './data/db:/Users/用户目录名/easymock/data/db'
     networks:
       - easy-mock
     restart: always
@@ -32,7 +32,7 @@ services:
     command: redis-server --appendonly yes
     volumes:
       # ./data/redis redis 数据文件存放地址，根据需要修改为本地地址
-      - './data/redis:/Users/{{用户目录名}}/easymock/data'
+      - './data/redis:/Users/用户目录名/easymock/data'
     networks:
       - easy-mock
     restart: always
@@ -44,9 +44,9 @@ services:
       - 7300:7300
     volumes:
       # 日志地址，根据需要修改为本地地址
-      - './logs:/Users/{{用户目录名}}/easymock/easy-mock/logs'
+      - './logs:/Users/用户目录名/easymock/easy-mock/logs'
       # 配置地址，请使用本地配置地址替换
-      - './production.json:/Users/{{用户目录名}}/easymock/easy-mock/config'
+      - './production.json:/Users/用户目录名/easymock/easy-mock/config'
     networks:
       - easy-mock
     restart: always
