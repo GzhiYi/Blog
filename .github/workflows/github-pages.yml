@@ -19,6 +19,7 @@ jobs:
       - uses: helaili/jekyll-action@2.3.1   # Choose any one of the Jekyll Actions
         with:                                # Some relative inputs of your action
           token: ${{ secrets.ACTION_TOKEN }}
+          target_branch: 'gh-pages'
       # push推送
       - name: Send Notification
         run: curl https://api2.pushdeer.com/message/push?pushkey=${{secrets.NOTIFICATION_TOKEN}}&text=博客部署成功&desp=<markdown>&type=markdown
