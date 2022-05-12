@@ -5,7 +5,7 @@ date:   2021-11-04 15:59:52 +0800
 categories: 随笔
 ---
 
-![新MacBook Pro](https://www.apple.com.cn/v/mac/home/bj/images/overview/hero/hero_macbook_pro_14_16__0y2t2v3g4hu2_large.jpg)  
+![新MacBook Pro](https://www.apple.com.cn/v/mac/home/bj/images/overview/hero/hero_macbook_pro_14_16__0y2t2v3g4hu2_large.jpg)
 ### 新MacBook Pro
 
 应该大部分苹果爱好者都知道，苹果在前不久发布了新的MacBook Pro，搭载了新的m1 pro和m1 max芯片来炸场。说实话，除开刘海有点碍眼之外，其他的各方面我都很满意。尽管厚度在视觉上有所增加，但我好像更喜欢这样“踏实”的机身。14寸机身也是刚好，在发布那晚我就下单了。心想着终于可以有一台移动的高性能生产力工具，充满了一些小期待。
