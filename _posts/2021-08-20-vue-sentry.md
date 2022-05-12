@@ -2,7 +2,7 @@
 layout: post
 title:  "vue引入sentry上报web异常"
 date:   2021-08-20 16:10:25 +0800
-categories: 前端
+categories: vue
 ---
 
 ![sentry](https://i.loli.net/2021/08/20/fLZgCaUNwyb5VI8.png)

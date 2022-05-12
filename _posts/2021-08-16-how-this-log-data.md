@@ -2,7 +2,7 @@
 layout: post
 title:  "vue是怎么在mounted、created等中访问到data数据的？"
 date:   2021-08-16 14:46:24 +0800
-categories: 前端
+categories: vue
 ---
 ![defineProperty](https://i.loli.net/2021/08/16/9wQxRlcUEeNstY8.png)  
 

@@ -21,7 +21,7 @@
 title: GzhiYi的个人博客
 email: zhiyi.gong@outlook.com
 description: >- # this means to ignore newlines until "baseurl:"
-  https://github.com/GzhiYi
+  
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: 

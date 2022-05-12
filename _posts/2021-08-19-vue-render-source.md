@@ -2,7 +2,7 @@
 layout: post
 title:  "理解一下vue的render方法"
 date:   2021-08-19 14:37:13 +0800
-categories: 前端
+categories: vue
 ---
 
 ![属性未定义的错误提示](https://i.loli.net/2021/08/19/w6YcFmd1eJOA5oC.png) 

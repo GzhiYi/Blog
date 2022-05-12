@@ -2,7 +2,7 @@
 layout: post
 title:  "vue获取不到dom节点"
 date:   2021-06-29 20:00:00 +0800
-categories: 前端
+categories: vue
 ---
 
 在vue开发中，出现拿不到dom节点的问题，具体的场景是页面需要对echarts进行实例化，画布需要挂在到某个id的dom上，图表的数据需要从接口上获取，大致的代码如下：
