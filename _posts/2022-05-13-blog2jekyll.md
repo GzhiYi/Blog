@@ -15,7 +15,7 @@ sapper 写博客缺点是编译 markdown 内容会比较慢。个别操作还是
 
 jekyll 编译起来速度非常快。
 
-我在 M1 的 MacBook Pro 上编译本站所有博客时间惊人！
+我在 M1 Pro 的 MacBook Pro 上编译本站所有博客时间快的惊人！
 
 ```bash
 Generating feed for posts
@@ -32,7 +32,7 @@ Generating feed for posts
 
 ### giscus 评论
 
-这个评论插件和之前使用过的 gittalk 类似，但 giscus 利用了 github 比较新但 discussions 功能，而 gittalk 插件则是用到了仓库的 issues 模块。
+这个评论插件和之前使用过的 gittalk 类似，但 giscus 利用了 github 比较新的 discussions 功能，而 gittalk 插件则是用到了仓库的 issues 模块。
 
 在 `_layout/post.html` 博客 content 下添加上从 giscus 生成的 script 代码片段即可。片段生成引导非常详细，基本上不会有出错，所以不赘述。
 
@@ -47,16 +47,15 @@ Generating feed for posts
 {% raw %}
 ~~~html
 {% assign postsByDay = site.posts | group_by_exp:"post", "post.date | date: '%Y 年 %m 月 %d 日'" %}
-    
-    {% for day in postsByDay %}
-    <h3>{{ day.name }}（{{ day.items | size }}）</h3>
-    <ul>
-      {% for post in day.items %}
-      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-      {% endfor %}
-    </ul>
+{% for day in postsByDay %}
+  <h3>{{ day.name }}（{{ day.items | size }}）</h3>
+  <ul>
+    {% for post in day.items %}
+    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
    
-   {% endfor %}
+{% endfor %}
 ~~~
 {% endraw %}
 
@@ -79,7 +78,7 @@ Generating feed for posts
 
 ### medium-zoom 插件
 
-提供和 medium 图片显示的插件。
+提供和 medium 图片一样显示效果的插件。
 
 在 `_includes/head.html` 文件中添加 `medium.zoom.min.js` 脚本引入。脚本应该存放在 `assets` 目录下。
 
