@@ -2,7 +2,7 @@
 layout: post
 title:  "Git提交信息格式化（规范）"
 date:   2021-08-08 06:05:05 +0800
-categories: git
+categories: Git
 ---
 
 ## Git 提交信息格式

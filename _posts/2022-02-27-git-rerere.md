@@ -2,7 +2,7 @@
 layout: post
 title:  "rerere！关于 rebase 出现很多冲突的问题"
 date:   2022-02-27 10:19:52 +0800
-categories: git
+categories: Git
 ---
 
 # rerere！关于 rebase 出现很多冲突的问题

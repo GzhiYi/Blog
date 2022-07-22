@@ -2,7 +2,7 @@
 layout: post
 title:  "git在工作中的基础"
 date:   2018-11-18 20:00:00 +0800
-categories: git
+categories: Git
 ---
 
 ![banner](https://images.vrm.cn/2018/11/26/banner.png)
