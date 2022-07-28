@@ -25,6 +25,8 @@
         const filterCategory = document.querySelector('#filter-category');
         const pathname = window.location.pathname;
 
+        mediumZoom && mediumZoom(document.querySelectorAll('img'))
+
         back && back.addEventListener('click', function () {
           window.history.back();
         });
