@@ -14,7 +14,37 @@
     </main>
 
     {%- include footer.html -%}
+    <script>
+      window.onload = function () {
+        const back = document.querySelector('.back');
+        const comment = document.querySelector('.comment');
+        const giscus = document.querySelector('.giscus');
 
+        // filter btn
+        const filterTime = document.querySelector('#filter-time');
+        const filterCategory = document.querySelector('#filter-category');
+        const pathname = window.location.pathname;
+
+        back && back.addEventListener('click', function () {
+          window.history.back();
+        });
+        comment && comment.addEventListener('click', function () {
+         // scroll into giscus
+          giscus.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        });
+        
+        // if path is / active filter time
+        if (pathname === '/') {
+          console.log('????')
+          filterTime.classList.add('active');
+        } else if (pathname === '/categories') {
+          filterCategory.classList.add('active');
+        }
+      }
+    </script>
   </body>
 
 </html>

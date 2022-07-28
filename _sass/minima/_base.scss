@@ -77,14 +77,15 @@ figcaption {
 /**
  * Lists
  */
-ul, ol {
-  margin-left: $spacing-unit;
-}
 
 li {
+  list-style-type: none;
   > ul,
   > ol {
     margin-bottom: 0;
+  }
+  a {
+    color: #111 !important;
   }
 }
 
@@ -150,8 +151,7 @@ pre,
 code {
   @include relative-font-size(0.9375);
   border: 1px solid $grey-color-light;
-  border-radius: 3px;
-  background-color: #eef;
+  border-radius: 4px;
 }
 
 code {
@@ -251,4 +251,16 @@ table {
   td {
     border: 1px solid $grey-color-light;
   }
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
 }

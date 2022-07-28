@@ -4,4 +4,4 @@ title: 关于
 permalink: /about/
 ---
 
-TODO
+我是一名 Web 前端工程师。热爱生活，热爱宇宙。

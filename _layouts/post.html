@@ -4,10 +4,18 @@ layout: default
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
+    <div class="flex justify-between">
+      <div class="back">
+        <img src="{{ "/assets/back.svg" }}" alt="back"> 返回
+      </div>
+      <div class="comment">
+        <img src="{{ "/assets/comment.svg" }}" alt="comment"> 评论
+      </div>
+    </div>
     <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
     <p class="post-meta">
       <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {%- assign date_format = site.minima.date_format | default: "%Y 年 %m 月 %d 日" -%}
+        {%- assign date_format = site.minima.date_format | default: "%Y-%m-%d %H:%M" -%}
         {{ page.date | date: date_format }}
       </time>
       {%- if page.author -%}
@@ -28,9 +36,9 @@ layout: default
     data-reactions-enabled="1"
     data-emit-metadata="0"
     data-input-position="top"
-    data-theme="light"
     data-lang="zh-CN"
     data-loading="lazy"
+    data-theme="light_protanopia"
     crossorigin="anonymous"
     async>
   </script>
