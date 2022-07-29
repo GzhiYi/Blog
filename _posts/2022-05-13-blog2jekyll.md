@@ -13,6 +13,8 @@ sapper 写博客缺点是编译 markdown 内容会比较慢。个别操作还是
 
 ## jekyll
 
+> 注意下面代码都需要将 \% 更改为 % 才能正常工作
+
 jekyll 编译起来速度非常快。
 
 我在 M1 Pro 的 MacBook Pro 上编译本站所有博客时间快的惊人！
@@ -38,43 +40,43 @@ Generating feed for posts
 
 ### 按分类和按时间排序文章
 
-1. 按时间分组展示
+1. 按时间分组展示  
+  默认的排序为按时间倒序，博客的根目录 / 所呈现的就是按日期倒序展示的。这里在日期倒序的前提下增加按月份分组。  
+  将 `_layout/home.html` 相关遍历 `site.posts` 改为：  
+    ```
+    {\% raw %}
+    ~~~html
+    {\% assign postsByDay = site.posts | group_by_exp:"post", "post.date | date: '%Y 年 %m 月 %d 日'" %}
+    {\% for day in postsByDay %}
+      <h3>{{ day.name }}（{{ day.items | size }}）</h3>
+      <ul>
+        {% for post in day.items %}
+        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
+      
+    {\% endfor %}
+    ~~~
+    {\% endraw %}
+    ```
 
-默认的排序为按时间倒序，博客的根目录 / 所呈现的就是按日期倒序展示的。这里在日期倒序的前提下增加按月份分组。
 
-将 `_layout/home.html` 相关遍历 `site.posts` 改为：
-
-{% raw %}
-~~~html
-{% assign postsByDay = site.posts | group_by_exp:"post", "post.date | date: '%Y 年 %m 月 %d 日'" %}
-{% for day in postsByDay %}
-  <h3>{{ day.name }}（{{ day.items | size }}）</h3>
-  <ul>
-    {% for post in day.items %}
-    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ul>
-   
-{% endfor %}
-~~~
-{% endraw %}
-
-2. 按分类展示：
-
-在 `_layout` 目录新建一个 `categories.html` 文件，内容和 `home.html` 基本一直，在博客渲染遍历代码上有所不同。
-
-{% raw %}
-~~~html
-{% for cate in site.categories %}
-    <h3>{{ cate[0] }} ({{cate[1] | size}})</h3>
-    <ul>
-      {% for post in cate[1] %}
-      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-      {% endfor %}
-     </ul>
-{% endfor %}
-~~~
-{% endraw  %}
+2. 按分类展示：  
+  在 `_layout` 目录新建一个 `categories.html` 文件，内容和 `home.html` 基本一直，在博客渲染遍历代码上有所不同。
+  ```
+  {\% raw %}
+  ~~~html
+  {\% for cate in site.categories %}
+      <h3>{{ cate[0] }} ({{cate[1] | size}})</h3>
+      <ul>
+        {% for post in cate[1] %}
+        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
+  {\% endfor %}
+  ~~~
+  {\% endraw  %}
+  ```
 
 ### medium-zoom 插件
 

@@ -1,15 +1,21 @@
 /**
  * Syntax highlighting styles
  */
+li {
+  .highlighter-rouge {
+    margin-top: 0.6rem;
+  }
+}
 .highlight {
-  background: rgb(246, 246, 246) !important;
+  background: #e5e2da !important;
   border-radius: 8px;
+  font-size: 16px;
+  border: none;
   @extend %vertical-rhythm;
 
-  .highlighter-rouge & {
+  .highlighter-rouge {
     background: rgb(246, 246, 246);
   }
-
   .c     { color: #998; font-style: italic } // Comment
   .err   { color: #a61717; background-color: #e3d2d2 } // Error
   .k     { font-weight: bold } // Keyword
@@ -69,4 +75,18 @@
   .vg    { color: #008080 } // Name.Variable.Global
   .vi    { color: #008080 } // Name.Variable.Instance
   .il    { color: #099 } // Literal.Number.Integer.Long
+}
+
+blockquote {
+  margin: 0;
+  padding: 0 1em;
+  color: #57606a;
+  border-left: 0.25em solid #d0d7de;
+  font-size: 16px;
+  li {
+    margin-bottom: 0.6rem;
+    img {
+      margin-top: 0.6rem;
+    }
+  }
 }

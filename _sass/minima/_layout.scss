@@ -235,20 +235,27 @@
 
 .post-content {
   margin-bottom: $spacing-unit;
+  .header-border {
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #e5e2da;
+  }
   h1 {
     @include relative-font-size(1.375);
+    font-weight: 500;
+    @extend .header-border;
   }
   h2 {
     @include relative-font-size(1.3);
-
+    font-weight: 500;
     @include media-query($on-laptop) {
       @include relative-font-size(1.3);
     }
+    @extend .header-border;
   }
 
   h3 {
     @include relative-font-size(1.2);
-
+    font-weight: 500;
     @include media-query($on-laptop) {
       @include relative-font-size(1.2);
     }
@@ -256,10 +263,14 @@
 
   h4 {
     @include relative-font-size(1.1);
-
+    font-weight: 500;
     @include media-query($on-laptop) {
       @include relative-font-size(1.1);
     }
+  }
+
+  ul, ol {
+    padding-left: 2em;
   }
 }
 
@@ -309,4 +320,7 @@
   height: 12px;
   margin-right: 4px;
   margin-top: 7px;
+}
+.rss-subscribe {
+  font-size: 0.8rem;
 }
