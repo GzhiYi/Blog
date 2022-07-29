@@ -26,7 +26,8 @@
         mediumZoom && mediumZoom(document.querySelectorAll('.post-content img'))
 
         back && back.addEventListener('click', function () {
-          window.history.back();
+          // to root
+          window.location.href = '/'
         });
         comment && comment.addEventListener('click', function () {
           giscus.scrollIntoView({
