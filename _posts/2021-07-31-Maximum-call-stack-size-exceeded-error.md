@@ -2,7 +2,7 @@
 layout: post
 title:  "记一次Maximum call stack size exceeded error"
 date:   2021-07-31 14:34:00 +0800
-categories: vue
+categories: Vue
 ---
 
 一次在ci打包编译vue项目，上线到测试环境后出现了Maximum call stack size exceeded error错误。

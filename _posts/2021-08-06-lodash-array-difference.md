@@ -2,7 +2,7 @@
 layout: post
 title:  "lodash数组中difference方法"
 date:   2021-08-06 18:21:57 +0800
-categories: lodash
+categories: Lodash
 ---
 
 ## Difference

@@ -2,7 +2,7 @@
 layout: post
 title:  "博客又双改了，现在使用 jekyll 进行部署"
 date:   2022-05-13 10:44:52 +0800
-categories: Blog
+categories: 博客
 ---
 
 # 抛弃原有博客仓库，使用 jekyll 

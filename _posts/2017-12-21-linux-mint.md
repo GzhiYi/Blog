@@ -2,7 +2,7 @@
 layout: post
 title:  "每次重装Linux Mint减少90%时间"
 date:   2017-12-21 20:00:00 +0800
-categories: linux
+categories: Linux
 ---
 
 ## 系统

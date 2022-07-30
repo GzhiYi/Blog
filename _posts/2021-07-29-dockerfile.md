@@ -2,7 +2,7 @@
 layout: post
 title:  "Dockerfile的一些用法记录"
 date:   2021-07-29 16:23:53 +0800
-categories: docker
+categories: Docker
 ---
 
 对于docker镜像的制作和compose的使用等就在这进行记录，便于学习理解和记忆使用。

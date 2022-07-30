@@ -2,7 +2,7 @@
 layout: post
 title:  "博客评论更改为valine并增加评论推送"
 date:   2020-06-29 20:00:00 +0800
-categories: Blog
+categories: 博客
 ---
 
 通过一点时间的使用，发现gitalk可以解决静态博客评论问题，是挺方便的，但综合考虑下，存在以下两个缺点：

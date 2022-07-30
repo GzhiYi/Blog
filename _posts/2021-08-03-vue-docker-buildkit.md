@@ -2,7 +2,7 @@
 layout: post
 title:  "用docker构建vue项目镜像，与buildkit体积对比"
 date:   2021-08-03 16:18:06 +0800
-categories: docker
+categories: Docker
 ---
 
 ## 使用Dockerfile去打包一个vue项目镜像

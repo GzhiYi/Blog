@@ -2,7 +2,7 @@
 layout: post
 title:  "如何在ubuntu下使用shadowsocks"
 date:   2017-11-09 20:00:00 +0800
-categories: linux
+categories: Linux
 ---
 
 ### 提示：

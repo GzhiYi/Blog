@@ -2,7 +2,7 @@
 layout: post
 title:  "lodash数组中chunk、compact方法"
 date:   2021-07-15 20:00:00 +0800
-categories: lodash
+categories: Lodash
 ---
 ## Chunk
 

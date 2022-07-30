@@ -2,7 +2,7 @@
 layout: post
 title:  "Vue构建出来的版本"
 date:   2021-08-12 15:43:53 +0800
-categories: vue
+categories: Vue
 ---
 
 ![图 2](https://i.loli.net/2021/08/12/gPNOFU8ycMaV9Jh.png)  

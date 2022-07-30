@@ -2,7 +2,7 @@
 layout: post
 title:  "为node应用增加hot reload"
 date:   2021-08-17 14:33:00 +0800
-categories: node
+categories: Node
 ---
 ![nodemon](https://i.loli.net/2021/08/17/24wim8VqIhJK3kg.png)  
 

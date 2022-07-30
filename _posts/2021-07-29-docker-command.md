@@ -2,7 +2,7 @@
 layout: post
 title:  "Docker的一些需记基础命令和用法"
 date:   2021-07-29 10:44:51 +0800
-categories: docker
+categories: Docker
 ---
 
 由于docker目前在项目中用的比较少，慢慢在写项目的过程中，有一些命令会被我遗忘掉。所以我把一些基础常用的docker命令列下来，方便自己在回顾docker或者重新使用的时候快速运用上。在后续的时间里，也会尽可能的将docker应用到能用上的项目中。
