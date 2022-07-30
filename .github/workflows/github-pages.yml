@@ -16,6 +16,11 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
           restore-keys: |
             ${{ runner.os }}-gems-
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+        - run: npm ci
+        - run: node heatmap/index.js
       - uses: helaili/jekyll-action@2.3.1   # Choose any one of the Jekyll Actions
         with:                                # Some relative inputs of your action
           token: ${{ secrets.ACTION_TOKEN }}

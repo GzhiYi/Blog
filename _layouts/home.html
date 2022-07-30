@@ -15,7 +15,7 @@ layout: default
     {% assign postsByDay = site.posts | group_by_exp:"post", "post.date | date: '%Y 年 %m 月 %d 日'" %}
     
     {% for day in postsByDay %}
-    <p class="sort-title">{{ day.name }}（{{ day.items | size }}）</p>
+    <p id="d{{ day.name | replace: " 年 ", "-" | replace: " 月 ", "-" | replace: " 日", "" }}" class="sort-title">{{ day.name }}（{{ day.items | size }}）</p>
       <ul class="one-sort">
         {% for post in day.items %}
         <li class="flex" style="margin-bottom: 4px;">

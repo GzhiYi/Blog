@@ -314,6 +314,7 @@
 .sort-title {
   font-size: 0.8rem;
   margin-bottom: 4px;
+  transition: 0.4s all;
 }
 .one-sort {
   margin-bottom: 1.6rem;
@@ -326,4 +327,50 @@
 }
 .rss-subscribe {
   font-size: 0.8rem;
+}
+.heatmap {
+  overflow: hidden;
+  direction: rtl;
+  margin: 24px 0;
+}
+.rect-item {
+  fill: #ebedf0;
+  shape-rendering: geometricPrecision;
+  outline: 1px solid #1b1f230f;
+  outline-offset: -1px;
+  pointer-events: all;
+  &[data-level="4"] {
+    fill: #216e39;
+  }
+  &[data-level="3"] {
+    fill: #30a14e;
+  }
+  &[data-level="2"] {
+    fill: #40c463;
+  }
+  &[data-level="1"] {
+    fill: #9be9a8;
+  }
+  &[data-level="0"] {
+    fill: #ebedf0;
+  }
+}
+.svg-tip {
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #fff;
+  text-align: left;
+  width: fit-content;
+  position: absolute;
+  z-index: 99;
+  .tip {
+    .item {
+      font-size: 0.6rem;
+    }
+  }
+}
+
+.week-label, .month-label {
+  fill:rgb(29, 12, 48);
+  font-size: 12px;
 }
