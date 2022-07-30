@@ -44,6 +44,8 @@
 
         if (pathname === '/about/') {
           const rectItemEl = document.querySelectorAll('.rect-item');
+          const tipEl = document.querySelector('.svg-tip')
+          tipEl.style.display = 'none'
           for (let i = 0; i < rectItemEl.length; i++) {
             const blogCount = rectItemEl[i].getAttribute('data-count')
             blogCount !== '0' && rectItemEl[i].addEventListener('mouseover', function (e) {
@@ -55,7 +57,6 @@
                   <div class="item">文章数：${count}</div>
                 </div>
               `
-              const tipEl = document.querySelector('.svg-tip')
               tipEl.style.top = e.screenY - 210 + 'px'
               tipEl.style.left = e.screenX - 65 + 'px'
               tipEl.style.display = 'inherit'
