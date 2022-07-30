@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: node heatmap/index.js
+      - run: npm install && node heatmap/index.js
       - uses: actions/cache@v2
         with:
           path: vendor/bundle
