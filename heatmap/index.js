@@ -115,7 +115,4 @@ function renderSvg() {
   fs.writeFileSync('./about.html', aboutFile)
 }
 
-
-// getPostsData()
 renderSvg()
-// generateCalendar()
