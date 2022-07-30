@@ -42,8 +42,9 @@ Generating feed for posts
 
 1. 按时间分组展示  
   默认的排序为按时间倒序，博客的根目录 / 所呈现的就是按日期倒序展示的。这里在日期倒序的前提下增加按月份分组。  
-  将 `_layout/home.html` 相关遍历 `site.posts` 改为：  
-    ```
+  将 `_layout/home.html` 相关遍历 `site.posts` 改为：
+  
+    ```html
     {\% raw %}
     ~~~html
     {\% assign postsByDay = site.posts | group_by_exp:"post", "post.date | date: '%Y 年 %m 月 %d 日'" %}
@@ -60,10 +61,10 @@ Generating feed for posts
     {\% endraw %}
     ```
 
-
 2. 按分类展示：  
   在 `_layout` 目录新建一个 `categories.html` 文件，内容和 `home.html` 基本一直，在博客渲染遍历代码上有所不同。
-  ```
+
+  ```html
   {\% raw %}
   ~~~html
   {\% for cate in site.categories %}
@@ -94,7 +95,7 @@ Generating feed for posts
 </script>
 ```
 
-# 更多
+## 更多
 
 如果还有疑惑，可以在下面的评论进行留言。评论需要 github 账号登录。或者，你也可以到这个博客的源码上查看一些细节，比如 actions 处理等等。
 

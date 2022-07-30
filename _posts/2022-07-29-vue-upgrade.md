@@ -18,13 +18,13 @@ Vue 2.7 的一些特性向 Vue 3 靠拢。主要是包含了 Composition API。�
 可以有三种方案。需要确定的是，补救措施的目的是为了减少组件返工，减少开发时间。那么可以：
 
 1. 将引入 Vue 2.7 组件的项目升级到 Vue 2.7。尽管这个方法很可行，但维护久远的项目想要升级这种主要依赖的版本，是需要非常慎重！不推荐。
-2. 将 Vue 2.7 组件项目更改为 Vue 2.6 + Composition API 依赖的方式。只需要引入依赖`@vue/composition-api`即可。推荐，几乎无伤。
-3. 将引入 Vue 2.7 组件的项目引入支持 Composition API。这样需要在项目中添加一个而外的依赖以补全 Composition API 的使用。还行，比第一个方案好。 
- 
+2. 将 Vue 2.7 组件项目更改为 Vue 2.6 + Composition API 依赖的方式。只需要引入依赖 `@vue/composition-api` 即可。推荐，几乎无伤。
+3. 将引入 Vue 2.7 组件的项目引入支持 Composition API。这样需要在项目中添加一个而外的依赖以补全 Composition API 的使用。还行，比第一个方案好。
+
    ```bash
    pnpm install @vue/composition-api
    ```
-   
+
    然后在 `main.js` 中:
 
    ```js

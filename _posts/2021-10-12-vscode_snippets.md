@@ -11,12 +11,12 @@ categories: 代码工具
 ```json
 {
   "Print to console": {
-		"prefix": "lg",
-		"body": [
-			"console.log('$1', $2)",
-		],
-		"description": "Log output to console"
-	}
+  "prefix": "lg",
+  "body": [
+   "console.log('$1', $2)",
+  ],
+  "description": "Log output to console"
+ }
 }
 ```
 
@@ -53,7 +53,7 @@ div(v-if="col.name === '参加人数'") {{row.num }}
 
 这时候就可以考虑动态生成snippets。
 
-#### 在vue执行编译运行开发环境前增加生成snippets
+### 在vue执行编译运行开发环境前增加生成snippets
 
 ```bash
 node init.js && vue-cli-service serve
@@ -103,4 +103,3 @@ try {
   // 
 }
 ```
-
