@@ -1,9 +1,8 @@
 const fs = require('fs')
 const dayjs = require('dayjs')
-import tz from 'dayjs/plugin/timezone'
-import utc from 'dayjs/plugin/utc'
-
-dayjs().tz("PRC").format('YYYY-MM-DD HH:mm:ss') 
+// 使用东八区时间
+dayjs.extend(require('dayjs/plugin/timezone'))
+dayjs.tz.setDefault('Asia/Shanghai')
 
 function getPostsData() {
   const posts = fs.readdirSync('./_posts')
