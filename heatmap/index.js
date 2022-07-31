@@ -24,6 +24,7 @@ function getPostsData() {
  */
 function getCurrentYearDateArr() {
   const lastDate = dayjs().format('YYYY-MM-DD')
+  console.log('现在时间', dayjs().format('YYYY-MM-DD HH:mm:ss'))
   const dateArr = []
   for (let i = 370; i >= 0; i--) {
     const date = dayjs(lastDate).subtract(i, 'day').format('YYYY-MM-DD')
