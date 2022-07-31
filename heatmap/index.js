@@ -1,8 +1,5 @@
 const fs = require('fs')
 const dayjs = require('dayjs')
-// 使用东八区时间
-dayjs.extend(require('dayjs/plugin/timezone'))
-dayjs.tz.setDefault('Asia/Shanghai')
 
 function getPostsData() {
   const posts = fs.readdirSync('./_posts')
@@ -23,8 +20,8 @@ function getPostsData() {
  * @description return current year every day in array
  */
 function getCurrentYearDateArr() {
-  const lastDate = dayjs().format('YYYY-MM-DD')
-  console.log('现在时间', dayjs().format('YYYY-MM-DD HH:mm:ss'))
+  // 需要增加八小时
+  const lastDate = dayjs().add(8, 'hours').format('YYYY-MM-DD')
   const dateArr = []
   for (let i = 370; i >= 0; i--) {
     const date = dayjs(lastDate).subtract(i, 'day').format('YYYY-MM-DD')
