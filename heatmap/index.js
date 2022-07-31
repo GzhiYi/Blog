@@ -28,6 +28,7 @@ function getCurrentYearDateArr() {
   const currentDay = new Date().getDate()
   const lastDate = `${currentYear}-${currentMonth}-${currentDay}`
   const dateArr = []
+  console.log('设置图表结束时间', lastDate)
   for (let i = 370; i >= 0; i--) {
     const date = dayjs(lastDate).subtract(i, 'day').format('YYYY-MM-DD')
     dateArr.push(date)
