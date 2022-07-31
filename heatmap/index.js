@@ -1,5 +1,9 @@
 const fs = require('fs')
 const dayjs = require('dayjs')
+import tz from 'dayjs/plugin/timezone'
+import utc from 'dayjs/plugin/utc'
+
+dayjs().tz("PRC").format('YYYY-MM-DD HH:mm:ss') 
 
 function getPostsData() {
   const posts = fs.readdirSync('./_posts')
