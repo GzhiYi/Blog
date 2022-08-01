@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node new.js",
-    "deploy": "sh shell/deploy.sh",
-    "run": "sh shell/run.sh"
+    "new": "node new.js",
+    "deploy": "git add . && git commit -m 'update' && git push",
+    "run": "bundle exec jekyll serve",
+    "write": ""
   },
   "repository": {
     "type": "git",
