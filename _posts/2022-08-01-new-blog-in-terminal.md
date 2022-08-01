@@ -1,7 +1,6 @@
----
-layout: post
+yout: post
 title: 博客增加通过命令行新建和编辑文章快捷操作
-date: 2022-08-01 12:37:52 +0800
+date: 2022-08-01 12:37:52
 categories: 博客
 ---
 
@@ -83,3 +82,4 @@ alias post="cd /Users/gzhiyi/Documents/projects/blog && yarn new"
 ``` 
 
 别忘记最后重启命令行或者执行 `source ~/.zshrc` 让配置生效。最后如果想写文章，只需要在任何用到 `～/.zshrc` 的 `terminal` 中输入 `post` 即可。
+

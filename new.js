@@ -13,13 +13,13 @@ function generatePost(title, url, category) {
   const templateStr = `---
 layout: post
 title: ${title}
-date: ${dayjs().format('YYYY-MM-DD HH:mm:ss')} +0800
+date: ${dayjs().format('YYYY-MM-DD HH:mm:ss')}
 categories: ${category}
 ---
 
 # 
 `
-  const fileName = `${dayjs().format('YYYY-MM-DD')}-${title}.md`
+  const fileName = `${dayjs().format('YYYY-MM-DD')}-${url}.md`
   fs.writeFileSync(`./_posts/${fileName}`, templateStr)
   return `./_posts/${fileName}`
 }
