@@ -22,7 +22,6 @@ function getPostsData() {
 function getCurrentYearDateArr() {
   // 需要增加八小时
   const lastDate = dayjs().add(8, 'hours').format('YYYY-MM-DD')
-  console.log('结束时间', lastDate)
   const dateArr = []
   for (let i = 370; i >= 0; i--) {
     const date = dayjs(lastDate).subtract(i, 'day').format('YYYY-MM-DD')
@@ -45,7 +44,6 @@ function generateCalendar() {
   const firstDateWeek = new Date(dateArr[0]).toLocaleString(
     'default', { weekday: 'long' }
   )
-  console.log('firstDateWeek', firstDateWeek)
   const mapWeekNum = {
     Monday: 1,
     Tuesday: 2,
