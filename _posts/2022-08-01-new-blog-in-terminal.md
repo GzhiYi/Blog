@@ -1,4 +1,5 @@
-yout: post
+---
+layout: post
 title: 博客增加通过命令行新建和编辑文章快捷操作
 date: 2022-08-01 12:37:52
 categories: 博客
