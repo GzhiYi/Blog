@@ -45,6 +45,7 @@ function generateCalendar() {
   const firstDateWeek = new Date(dateArr[0]).toLocaleString(
     'default', { weekday: 'long' }
   )
+  console.log('firstDateWeek', firstDateWeek)
   const mapWeekNum = {
     '星期一': 1,
     '星期二': 2,
