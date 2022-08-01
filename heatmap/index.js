@@ -47,13 +47,13 @@ function generateCalendar() {
   )
   console.log('firstDateWeek', firstDateWeek)
   const mapWeekNum = {
-    '星期一': 1,
-    '星期二': 2,
-    '星期三': 3,
-    '星期四': 4,
-    '星期五': 5,
-    '星期六': 6,
-    '星期日': 7
+    Monday: 1,
+    Tuesday: 2,
+    Wednesday: 3,
+    Thursday: 4,
+    Friday: 5,
+    Saturday: 6,
+    Sunday: 7
   }
   const mapWeekLabel = {
     1: '周一',
