@@ -5,8 +5,7 @@ on:
     branches:
       - master
   schedule:
-    cron:
-      - "0 8 * * *"
+    - cron: "0 8 * * *"
 jobs:
   github-pages:
     runs-on: ubuntu-latest
