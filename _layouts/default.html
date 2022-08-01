@@ -51,9 +51,12 @@
             blogCount !== '0' && rectItemEl[i].addEventListener('mouseover', function (e) {
               const date = e.target.dataset.date
               const count = e.target.dataset.count
+              const week = new Date(date).toLocaleString(
+                'default', { weekday: 'long' }
+              )
               const tipStr = `
                 <div class="tip">
-                  <div class="item">日期：${date}</div>
+                  <div class="item">日期：${date}，${week.replace('星期', '周')}</div>
                   <div class="item">文章数：${count}</div>
                 </div>
               `

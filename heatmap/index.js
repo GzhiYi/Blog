@@ -42,7 +42,28 @@ function generateCalendar() {
   const dateSlice = []
   let weekSvg = ''
   const monthLabelData = []
-  
+  const firstDateWeek = new Date(dateArr[0]).toLocaleString(
+    'default', { weekday: 'long' }
+  )
+  const mapWeekNum = {
+    '星期一': 1,
+    '星期二': 2,
+    '星期三': 3,
+    '星期四': 4,
+    '星期五': 5,
+    '星期六': 6,
+    '星期日': 7
+  }
+  const mapWeekLabel = {
+    1: '周一',
+    2: '周二',
+    3: '周三',
+    4: '周四',
+    5: '周五',
+    6: '周六',
+    7: '周日'
+  }
+  const firstDateWeekNum = mapWeekNum[firstDateWeek]
   for (let i = 0; i < dateArr.length; i+= 7) {
     const chunk = dateArr.slice(i, i + 7)
     dateSlice.push(chunk)
@@ -88,14 +109,14 @@ function generateCalendar() {
       >${label}</text>
     `
   })
-  // <text class="week-label" dx="10" dy="21.5">周一</text>
-  // <text class="week-label" dx="10" dy="47.5">周三</text>
-  // <text class="week-label" dx="10" dy="74.5">周五</text>
   return `
     <svg width="720" height="121" class="graph">
       <g transform="translate(15, 20)">
         ${weekSvg}
         ${monthLabel}
+        <text class="week-label" dx="10" dy="21.5">${mapWeekLabel[firstDateWeekNum + 1]}</text>
+        <text class="week-label" dx="10" dy="47.5">${mapWeekLabel[firstDateWeekNum + 3]}</text>
+        <text class="week-label" dx="10" dy="74.5">${mapWeekLabel[firstDateWeekNum + 5]}</text>
       </g>
     </svg>
     <div
