@@ -1,7 +1,7 @@
 ---
 layout: post
 title: CommonJS 和 Es Module 的一些小总结
-date: 2022-08-01 21:10:49
+date: 2022-08-01 21:10:49 +0800
 categories: 前端
 ---
 

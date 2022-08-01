@@ -13,7 +13,7 @@ function generatePost(title, url, category) {
   const templateStr = `---
 layout: post
 title: ${title}
-date: ${dayjs().format('YYYY-MM-DD HH:mm:ss')}
+date: ${dayjs().format('YYYY-MM-DD HH:mm:ss')} +0800
 categories: ${category}
 ---
 
