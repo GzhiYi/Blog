@@ -71,6 +71,8 @@ function generateCalendar() {
         })
       }
     })
+    // WeekSvg is not right.
+    // 有空优化
     weekSvg += `
       <g transform="translate(${14 * weekIndex}, 0)">${daySvg}</g>
     `
@@ -91,7 +93,6 @@ function generateCalendar() {
   return `
     <svg width="720" height="121" class="graph">
       <g transform="translate(15, 20)">
-        ${weekSvg}
         ${monthLabel}
         <text class="week-label" dx="10" dy="21.5">周一</text>
         <text class="week-label" dx="10" dy="47.5">周三</text>
