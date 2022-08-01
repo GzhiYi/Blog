@@ -109,7 +109,7 @@ function generateCalendar() {
     `
   })
   return `
-    <svg width="720" height="121" class="graph">
+    <svg width="730" height="121" class="graph">
       <g transform="translate(15, 20)">
         ${weekSvg}
         ${monthLabel}
