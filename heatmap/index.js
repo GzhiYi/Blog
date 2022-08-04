@@ -108,14 +108,18 @@ function generateCalendar() {
       >${label}</text>
     `
   })
+  const fmtWeekLabel = weekNum => {
+    if (weekNum > 7) weekNum = weekNum - 7
+    return mapWeekLabel[weekNum]
+  }
   return `
     <svg width="730" height="121" class="graph">
       <g transform="translate(15, 20)">
         ${weekSvg}
         ${monthLabel}
-        <text class="week-label" dx="10" dy="21.5">${mapWeekLabel[firstDateWeekNum + 1]}</text>
-        <text class="week-label" dx="10" dy="47.5">${mapWeekLabel[firstDateWeekNum + 3]}</text>
-        <text class="week-label" dx="10" dy="74.5">${mapWeekLabel[firstDateWeekNum + 5]}</text>
+        <text class="week-label" dx="10" dy="21.5">${ fmtWeekLabel(firstDateWeekNum + 1) }</text>
+        <text class="week-label" dx="10" dy="47.5">${ fmtWeekLabel(firstDateWeekNum + 3) }</text>
+        <text class="week-label" dx="10" dy="74.5">${ fmtWeekLabel(firstDateWeekNum + 5) }</text>
       </g>
     </svg>
     <div
