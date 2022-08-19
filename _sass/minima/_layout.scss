@@ -374,3 +374,19 @@
   fill:rgb(29, 12, 48);
   font-size: 12px;
 }
+.leave-message {
+  position: relative;
+  margin: 200px 0 100px;
+  .text-center {
+    text-align: center;
+    font-size: 1.8rem;
+  }
+  img {
+    width: 64px;
+    height: 64px;
+    border-radius: 0 !important;
+    position: absolute;
+    left: calc(50% + 33px);
+    margin-top: -19px;
+  }
+}
