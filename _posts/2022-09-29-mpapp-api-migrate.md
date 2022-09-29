@@ -56,4 +56,33 @@ await this.UserModel.create({
 
 最终的目的是持有邮箱和密码就可以在任何设备进行登录，目前的做法是为了方便用户正确的迁移账户数据。
 
+### 服务部署
 
+在最后一刻我才回想起来，小程序接口服务需要 https 不说，还需要该服务器在国内备案，我买的轻量应用服务器在新加坡😠。搜索无果后，没办法，找了一个勉强能使用的方法：使用云函数中转请求。
+
+云函数大概的长这样：
+
+```js
+return new Promise((resolve, reject) => {
+    request({
+      url,
+      headers,
+      method: method || 'get',
+      body: data,
+      json: true
+    }, (error, response, body) => {
+      if (!error) {
+        try {
+          resolve({
+            statusCode: response.statusCode,
+            data: body
+          })
+        } catch (e) {
+          reject()
+        }
+      }
+    })
+  })
+```
+
+使用云函数的缺点就是还不能完全摆脱云开发，每月还得付费。计划等用户数据迁移完成后，买个国内的服务器然后备案。还是不走捷径了。💔。
