@@ -1,4 +1,4 @@
-i---
+---
 layout: post
 title: 不能在 axios 拦截器中判断 statusText 的值
 date: 2023-02-22 10:22:51 +0800
