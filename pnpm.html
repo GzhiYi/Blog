@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icon/site.webmanifest">
+  <link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6428285898429073" crossorigin="anonymous"></script>
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>使用pnpm减少前端开发环境依赖磁盘占用 | GzhiYi 的个人博客</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="使用pnpm减少前端开发环境依赖磁盘占用" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="我是一名 Web 前端工程师。热爱生活，热爱宇宙。" />
+<meta property="og:description" content="我是一名 Web 前端工程师。热爱生活，热爱宇宙。" />
+<link rel="canonical" href="https://gzhiyi.top/pnpm" />
+<meta property="og:url" content="https://gzhiyi.top/pnpm" />
+<meta property="og:site_name" content="GzhiYi 的个人博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-09-26T17:08:45+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="使用pnpm减少前端开发环境依赖磁盘占用" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-09-26T17:08:45+08:00","datePublished":"2021-09-26T17:08:45+08:00","description":"我是一名 Web 前端工程师。热爱生活，热爱宇宙。","headline":"使用pnpm减少前端开发环境依赖磁盘占用","mainEntityOfPage":{"@type":"WebPage","@id":"https://gzhiyi.top/pnpm"},"url":"https://gzhiyi.top/pnpm"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://gzhiyi.top/feed.xml" title="GzhiYi 的个人博客" /><script async src="https://www.googletagmanager.com/gtag/js?id=G-KRRRY4XFPE"></script>
+<script>
+  window.dataLayer = window.dataLayer || []
+  function gtag() { dataLayer.push(arguments) }
+  gtag('js', new Date())
+
+  gtag('config', 'G-KRRRY4XFPE');
+</script><script async src="/assets/medium-zoom.min.js"></script>
+</head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><div style="float: left;">
+      <a class="site-title" rel="author" href="/">GzhiYi </a>
+      <span class="slogan">想遨游宇宙 🌌</span>
+    </div><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">关于</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <div class="flex justify-between">
+      <div class="back">
+        <img src="/assets/back.svg" alt="back"> 返回
+      </div>
+      <div class="comment">
+        <img src="/assets/comment.svg" alt="comment"> 评论
+      </div>
+    </div>
+    <h1 class="post-title p-name" itemprop="name headline">使用pnpm减少前端开发环境依赖磁盘占用</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-09-26T17:08:45+08:00" itemprop="datePublished">2021-09-26 17:08
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><img src="https://i.loli.net/2021/09/28/RoqwhJ4f6A9VQEB.png" alt="图 1" /></p>
+
+<p><a href="https://pnpm.io/zh/motivation">pnpm</a>。使用pnpm代替npm可以减少大量的模块磁盘占用。这不就是黑洞毁灭者吗？</p>
+
+<h3 id="使用">使用</h3>
+
+<p>首先安装</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-f</span> https://get.pnpm.io/v6.14.js | node - add <span class="nt">--global</span> pnpm
+</code></pre></div></div>
+
+<p>或者也可以通过npm进行全局安装</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-g</span> pnpm
+</code></pre></div></div>
+
+<p>依赖安装</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pnpm <span class="nb">install</span>
+
+<span class="c"># 安装某个依赖</span>
+pnpm add &lt;pkg&gt;
+
+<span class="c"># 运行</span>
+pnpm &lt;cmd&gt;
+</code></pre></div></div>
+
+<h3 id="空间对比">空间对比</h3>
+
+<p>使用npm</p>
+
+<p><img src="https://i.loli.net/2021/09/28/GHNYCQotlUxWVdu.png" alt="图 2" /></p>
+
+<p>使用pnpm</p>
+
+<p><img src="https://i.loli.net/2021/09/28/yi3CxTAO9cGpbNV.png" alt="图 3" /></p>
+
+<p>效果显著。</p>
+
+<h3 id="为啥不用yarn">为啥不用yarn</h3>
+
+<p>对比一下npm和yarn，Yarn 是为了弥补 npm 的一些缺陷而出现的。yarn的优点：</p>
+
+<ol>
+  <li>安装速度快。具备并行安装，npm按照队列执行每个pkg的安装，yarn是同步执行所有安装任务。</li>
+  <li>安装版本统一。安装会生成一个版本lock文件。</li>
+</ol>
+
+<p>yarn和npm一样，具有扁平依赖树，而扁平依赖树具有的问题：</p>
+
+<ol>
+  <li>模块和模块之间可以访问，即使他们没有依赖关系</li>
+  <li>扁平依赖树算法复杂</li>
+  <li>node_module内部的模块还会带有node_module</li>
+</ol>
+
+<p>而pnpm并没有扁平依赖树。</p>
+
+<p>在npm@3前，依赖如下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node_modules
+└─ foo
+   ├─ index.js
+   ├─ package.json
+   └─ node_modules
+      └─ bar
+         ├─ index.js
+         └─ package.json
+</code></pre></div></div>
+
+<p>这样的结构会有这样的问题：</p>
+
+<ol>
+  <li>依赖足够深的话，会导致路径非常长，在windows下会有长路径问题。</li>
+  <li>当依赖各种依赖的时候，会让依赖进行多次复制拷贝。</li>
+</ol>
+
+<p>在npm@3之后，依赖树进行扁平化：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node_modules
+├─ foo
+|  ├─ index.js
+|  └─ package.json
+└─ bar
+   ├─ index.js
+   └─ package.json
+</code></pre></div></div>
+
+<p>pnpm解决了npm@2有的问题，但却不用npm@3的扁平依赖树。</p>
+
+<h3 id="pnpm引入">pnpm引入</h3>
+
+<p>如果是本地的node_modules:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">foo</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+<p>会引入<code class="language-plaintext highlighter-rouge">node_modules/foo/index.js</code>，而如果是pnpm，则会引入<code class="language-plaintext highlighter-rouge">node_modules/.registry.npmjs.org/foo/1.0.0/node_modules/foo/index.js</code>。</p>
+
+  </div>
+
+  <script src="https://giscus.app/client.js"
+    data-repo="GzhiYi/blog"
+    data-repo-id="R_kgDOHTfM8w"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOHTfM884CPCdh"
+    data-mapping="og:title"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    data-theme="light_protanopia"
+    crossorigin="anonymous"
+    async>
+  </script><a class="u-url" href="/pnpm" hidden></a>
+</article>
+
+      </div>
+    </main><div class="footer">
+  <div class="slogan">想遨游宇宙 🌌</div>
+</div><script>
+      window.onload = function () {
+        const back = document.querySelector('.back');
+        const comment = document.querySelector('.comment');
+        const giscus = document.querySelector('.giscus');
+        const filterTime = document.querySelector('#filter-time');
+        const filterCategory = document.querySelector('#filter-category');
+        const pathname = window.location.pathname;
+
+        mediumZoom && mediumZoom(document.querySelectorAll('.post-content img'))
+
+        back && back.addEventListener('click', function () {
+          // to root
+          window.location.href = '/'
+        });
+        comment && comment.addEventListener('click', function () {
+          giscus.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        });
+        
+        if (pathname === '/') {
+          filterTime.classList.add('active');
+        } else if (pathname === '/categories') {
+          filterCategory.classList.add('active');
+        }
+
+        if (pathname === '/about/') {
+          const rectItemEl = document.querySelectorAll('.rect-item');
+          const tipEl = document.querySelector('.svg-tip')
+          tipEl.style.display = 'none'
+          for (let i = 0; i < rectItemEl.length; i++) {
+            const blogCount = rectItemEl[i].getAttribute('data-count')
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseover', function (e) {
+              const date = e.target.dataset.date
+              const count = e.target.dataset.count
+              const week = new Date(date).toLocaleString(
+                'default', { weekday: 'long' }
+              )
+              const tipStr = `
+                <div class="tip">
+                  <div class="item">日期：${date}，${week.replace('星期', '周')}</div>
+                  <div class="item">文章数：${count}</div>
+                </div>
+              `
+              tipEl.style.top = e.screenY - 210 + 'px'
+              tipEl.style.left = e.screenX - 65 + 'px'
+              tipEl.style.display = 'inherit'
+              tipEl.innerHTML = tipStr
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseout', function (e) {
+              const tipEl = document.querySelector('.svg-tip')
+              tipEl.style.display = 'none'
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('click', function (e) {
+              window.sessionStorage.setItem('filter-time', `d${e.target.dataset.date}`)
+              window.location.href = `/`
+            })
+          }
+        }
+        if (pathname === '/') {
+          const filterTime = window.sessionStorage.getItem('filter-time')
+          if (filterTime) {
+            const goEl = document.querySelector(`#${filterTime}`)
+            goEl.style.color = 'red'
+            goEl && goEl.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+            setTimeout(() => {
+              goEl.style.color = 'inherit'
+            }, 1500)
+            window.sessionStorage.removeItem('filter-time')
+          }
+        }
+      }
+    </script>
+  </body>
+
+</html>

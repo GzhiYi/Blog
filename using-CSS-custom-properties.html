@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icon/site.webmanifest">
+  <link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6428285898429073" crossorigin="anonymous"></script>
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>使用 CSS 自定义属性解决行内 hover 等伪类样式问题 | GzhiYi 的个人博客</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="使用 CSS 自定义属性解决行内 hover 等伪类样式问题" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="在个别情况需要用到 CSS 自定属性解决一些自定义样式问题。例如有个组件定义一个 props 为 hoverColor，意思是可以根据传入的颜色决定组件内某处元素 hover 的背景色。css 本身不支持行内的 hover 属性定义，所以不能直接在 style 内通过变量去设置 hover 样式。" />
+<meta property="og:description" content="在个别情况需要用到 CSS 自定属性解决一些自定义样式问题。例如有个组件定义一个 props 为 hoverColor，意思是可以根据传入的颜色决定组件内某处元素 hover 的背景色。css 本身不支持行内的 hover 属性定义，所以不能直接在 style 内通过变量去设置 hover 样式。" />
+<link rel="canonical" href="https://gzhiyi.top/using-CSS-custom-properties" />
+<meta property="og:url" content="https://gzhiyi.top/using-CSS-custom-properties" />
+<meta property="og:site_name" content="GzhiYi 的个人博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-05-13T17:09:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="使用 CSS 自定义属性解决行内 hover 等伪类样式问题" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-05-13T17:09:00+08:00","datePublished":"2022-05-13T17:09:00+08:00","description":"在个别情况需要用到 CSS 自定属性解决一些自定义样式问题。例如有个组件定义一个 props 为 hoverColor，意思是可以根据传入的颜色决定组件内某处元素 hover 的背景色。css 本身不支持行内的 hover 属性定义，所以不能直接在 style 内通过变量去设置 hover 样式。","headline":"使用 CSS 自定义属性解决行内 hover 等伪类样式问题","mainEntityOfPage":{"@type":"WebPage","@id":"https://gzhiyi.top/using-CSS-custom-properties"},"url":"https://gzhiyi.top/using-CSS-custom-properties"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://gzhiyi.top/feed.xml" title="GzhiYi 的个人博客" /><script async src="https://www.googletagmanager.com/gtag/js?id=G-KRRRY4XFPE"></script>
+<script>
+  window.dataLayer = window.dataLayer || []
+  function gtag() { dataLayer.push(arguments) }
+  gtag('js', new Date())
+
+  gtag('config', 'G-KRRRY4XFPE');
+</script><script async src="/assets/medium-zoom.min.js"></script>
+</head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><div style="float: left;">
+      <a class="site-title" rel="author" href="/">GzhiYi </a>
+      <span class="slogan">想遨游宇宙 🌌</span>
+    </div><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">关于</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <div class="flex justify-between">
+      <div class="back">
+        <img src="/assets/back.svg" alt="back"> 返回
+      </div>
+      <div class="comment">
+        <img src="/assets/comment.svg" alt="comment"> 评论
+      </div>
+    </div>
+    <h1 class="post-title p-name" itemprop="name headline">使用 CSS 自定义属性解决行内 hover 等伪类样式问题</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2022-05-13T17:09:00+08:00" itemprop="datePublished">2022-05-13 17:09
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>在个别情况需要用到 CSS 自定属性解决一些自定义样式问题。例如有个组件定义一个 props 为 <code class="language-plaintext highlighter-rouge">hoverColor</code>，意思是可以根据传入的颜色决定组件内某处元素 hover 的背景色。css 本身不支持行内的 hover 属性定义，所以不能直接在 style 内通过变量去设置 hover 样式。</p>
+
+<h2 id="css-自定义属性">CSS 自定义属性</h2>
+
+<p>包含的值在整个文档中生效并可重复使用，属性名需要<code class="language-plaintext highlighter-rouge">--</code>打头。通过 style 去设置值：</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"--hover-color: red;"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>通过 var 去取值：</p>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.item</span><span class="nd">:hover</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">hover-color</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>在 chrome 和 safari 上都具有不错的兼容性，chrome 上最佳。</p>
+
+<h2 id="和-sass-配合处理数组配置的样式问题">和 sass 配合处理数组配置的样式问题</h2>
+
+<p>假设有这样一个配置数组：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">boxData</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">boxa</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">hoverColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#f5a432</span><span class="dl">'</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">boxb</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">hoverColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#f32422</span><span class="dl">'</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">boxc</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">hoverColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#f54432</span><span class="dl">'</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<p>组件渲染这个数组，生成 3 个 div 盒子：</p>
+
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">v-for=</span><span class="s">"item in boxData"</span><span class="nt">&gt;&lt;/div&gt;</span>
+
+</code></pre></div></div>
+
+<p>boxData 为上方定义的数据。</p>
+
+<p>根据上面的做法，配合 sass 可以实现定义多个 css 自定义属性。</p>
+
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span>
+  <span class="na">v-for=</span><span class="s">"(item, index) in boxData"</span>
+  <span class="na">:style=</span><span class="s">"`--hover-color-${index}: ${item.hoverColor}`"</span>
+  <span class="na">:class=</span><span class="s">"`hover-item-${index}`"</span>
+<span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@for</span> <span class="nv">$i</span> <span class="ow">from</span> <span class="m">0</span> <span class="ow">to</span> <span class="m">3</span> <span class="err">{</span>
+  <span class="nc">.hover-item-</span><span class="si">#{</span><span class="nv">$i</span><span class="si">}</span><span class="nd">:hover</span> <span class="err">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">hover-color-</span><span class="si">#{</span><span class="nv">$i</span><span class="si">}</span><span class="p">)</span><span class="err">;</span>
+  <span class="err">}</span>
+<span class="err">}</span>
+</code></pre></div></div>
+
+<p>如果有更好的做法，欢迎评论中留言～</p>
+
+  </div>
+
+  <script src="https://giscus.app/client.js"
+    data-repo="GzhiYi/blog"
+    data-repo-id="R_kgDOHTfM8w"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOHTfM884CPCdh"
+    data-mapping="og:title"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    data-theme="light_protanopia"
+    crossorigin="anonymous"
+    async>
+  </script><a class="u-url" href="/using-CSS-custom-properties" hidden></a>
+</article>
+
+      </div>
+    </main><div class="footer">
+  <div class="slogan">想遨游宇宙 🌌</div>
+</div><script>
+      window.onload = function () {
+        const back = document.querySelector('.back');
+        const comment = document.querySelector('.comment');
+        const giscus = document.querySelector('.giscus');
+        const filterTime = document.querySelector('#filter-time');
+        const filterCategory = document.querySelector('#filter-category');
+        const pathname = window.location.pathname;
+
+        mediumZoom && mediumZoom(document.querySelectorAll('.post-content img'))
+
+        back && back.addEventListener('click', function () {
+          // to root
+          window.location.href = '/'
+        });
+        comment && comment.addEventListener('click', function () {
+          giscus.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        });
+        
+        if (pathname === '/') {
+          filterTime.classList.add('active');
+        } else if (pathname === '/categories') {
+          filterCategory.classList.add('active');
+        }
+
+        if (pathname === '/about/') {
+          const rectItemEl = document.querySelectorAll('.rect-item');
+          const tipEl = document.querySelector('.svg-tip')
+          tipEl.style.display = 'none'
+          for (let i = 0; i < rectItemEl.length; i++) {
+            const blogCount = rectItemEl[i].getAttribute('data-count')
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseover', function (e) {
+              const date = e.target.dataset.date
+              const count = e.target.dataset.count
+              const week = new Date(date).toLocaleString(
+                'default', { weekday: 'long' }
+              )
+              const tipStr = `
+                <div class="tip">
+                  <div class="item">日期：${date}，${week.replace('星期', '周')}</div>
+                  <div class="item">文章数：${count}</div>
+                </div>
+              `
+              tipEl.style.top = e.screenY - 210 + 'px'
+              tipEl.style.left = e.screenX - 65 + 'px'
+              tipEl.style.display = 'inherit'
+              tipEl.innerHTML = tipStr
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseout', function (e) {
+              const tipEl = document.querySelector('.svg-tip')
+              tipEl.style.display = 'none'
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('click', function (e) {
+              window.sessionStorage.setItem('filter-time', `d${e.target.dataset.date}`)
+              window.location.href = `/`
+            })
+          }
+        }
+        if (pathname === '/') {
+          const filterTime = window.sessionStorage.getItem('filter-time')
+          if (filterTime) {
+            const goEl = document.querySelector(`#${filterTime}`)
+            goEl.style.color = 'red'
+            goEl && goEl.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+            setTimeout(() => {
+              goEl.style.color = 'inherit'
+            }, 1500)
+            window.sessionStorage.removeItem('filter-time')
+          }
+        }
+      }
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icon/site.webmanifest">
+  <link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6428285898429073" crossorigin="anonymous"></script>
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>在自建 GitLab 中 使用 NPM Packages | GzhiYi 的个人博客</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="在自建 GitLab 中 使用 NPM Packages" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="如果不想将个人 npm 包放到外部访问，只能在个别项目上引入的话，可以使用 GitLab 的 Package Registry 服务。实际上不止 npm 包，还有很多比如 Composer、Ruby gems 等都可以将一个 Git 仓库作为一个 Package。" />
+<meta property="og:description" content="如果不想将个人 npm 包放到外部访问，只能在个别项目上引入的话，可以使用 GitLab 的 Package Registry 服务。实际上不止 npm 包，还有很多比如 Composer、Ruby gems 等都可以将一个 Git 仓库作为一个 Package。" />
+<link rel="canonical" href="https://gzhiyi.top/gitlab-private-npm-package" />
+<meta property="og:url" content="https://gzhiyi.top/gitlab-private-npm-package" />
+<meta property="og:site_name" content="GzhiYi 的个人博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-07-22T16:26:52+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="在自建 GitLab 中 使用 NPM Packages" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-07-22T16:26:52+08:00","datePublished":"2022-07-22T16:26:52+08:00","description":"如果不想将个人 npm 包放到外部访问，只能在个别项目上引入的话，可以使用 GitLab 的 Package Registry 服务。实际上不止 npm 包，还有很多比如 Composer、Ruby gems 等都可以将一个 Git 仓库作为一个 Package。","headline":"在自建 GitLab 中 使用 NPM Packages","mainEntityOfPage":{"@type":"WebPage","@id":"https://gzhiyi.top/gitlab-private-npm-package"},"url":"https://gzhiyi.top/gitlab-private-npm-package"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://gzhiyi.top/feed.xml" title="GzhiYi 的个人博客" /><script async src="https://www.googletagmanager.com/gtag/js?id=G-KRRRY4XFPE"></script>
+<script>
+  window.dataLayer = window.dataLayer || []
+  function gtag() { dataLayer.push(arguments) }
+  gtag('js', new Date())
+
+  gtag('config', 'G-KRRRY4XFPE');
+</script><script async src="/assets/medium-zoom.min.js"></script>
+</head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><div style="float: left;">
+      <a class="site-title" rel="author" href="/">GzhiYi </a>
+      <span class="slogan">想遨游宇宙 🌌</span>
+    </div><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">关于</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <div class="flex justify-between">
+      <div class="back">
+        <img src="/assets/back.svg" alt="back"> 返回
+      </div>
+      <div class="comment">
+        <img src="/assets/comment.svg" alt="comment"> 评论
+      </div>
+    </div>
+    <h1 class="post-title p-name" itemprop="name headline">在自建 GitLab 中 使用 NPM Packages</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2022-07-22T16:26:52+08:00" itemprop="datePublished">2022-07-22 16:26
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>如果不想将个人 npm 包放到外部访问，只能在个别项目上引入的话，可以使用 GitLab 的 Package Registry 服务。实际上不止 npm 包，还有很多比如 Composer、Ruby gems 等都可以将一个 Git 仓库作为一个 Package。</p>
+
+<p>这里只说明 npm 的包上传和使用。</p>
+
+<h2 id="上传-package-到-gitlab">上传 package 到 GitLab</h2>
+
+<p>首先需要一个 Deploy Token 才能上传。这个 Token 可以让你读取包(packages)、代码内容(repository)、代码镜像(registry images)。</p>
+
+<p>进入项目（具有package.json的仓库，这里不做区分，仓库就是 npm 包！） - 设置 - 仓库设置 - 部署令牌。英文则是：Settings - Repository - Deploy tokens。</p>
+
+<p>填写令牌名称和过期时间（不填则永久），注意必须勾选 <code class="language-plaintext highlighter-rouge">读</code> 和 <code class="language-plaintext highlighter-rouge">写</code> 权限，否则不能正常上传和引入。</p>
+
+<p>新建一个 .npmrc 文件存放当前项目的 npm 配置。内容如下：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">registry</span><span class="o">=</span>https://私有GitLab域名/api/v4/projects/项目ID/packages/npm/
+//私有GitLab域名/api/v4/projects/项目ID/packages/npm/:_authToken<span class="o">=</span>部署令牌
+</code></pre></div></div>
+
+<p>说明：</p>
+
+<ol>
+  <li>私有 GitLab 域名。填写正在使用 GitLab 域名。</li>
+  <li>项目ID。在项目主页信息中有个 Project ID 显示。</li>
+  <li>部署令牌。由上面操作生成的具有读和写操作的令牌。</li>
+</ol>
+
+<p>上传到 GitLab 上，还需要最后一步，在 <code class="language-plaintext highlighter-rouge">package.json</code> 中指定发布配置 Registry 地址。</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"publishConfig "</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"registry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://私有Gitlab域名/api/v4/projects/项目ID/packages/npm/"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>然后就可以发布了。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm publish
+</code></pre></div></div>
+
+<p>发布成功后，就可以在 GitLab 仓库的 <code class="language-plaintext highlighter-rouge">包&amp;镜像(Packages &amp; Registries)</code> 中找到刚刚上传的镜像。</p>
+
+<h2 id="外部引用">外部引用</h2>
+
+<p>在需要引入的项目中，创建一个 .npmrc 文件。一样将上面 .npmrc 内容复制过来，就可以直接 npm install 了，当然需要在 项目的 package.json 中设置引入包名以及版本。</p>
+
+  </div>
+
+  <script src="https://giscus.app/client.js"
+    data-repo="GzhiYi/blog"
+    data-repo-id="R_kgDOHTfM8w"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOHTfM884CPCdh"
+    data-mapping="og:title"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    data-theme="light_protanopia"
+    crossorigin="anonymous"
+    async>
+  </script><a class="u-url" href="/gitlab-private-npm-package" hidden></a>
+</article>
+
+      </div>
+    </main><div class="footer">
+  <div class="slogan">想遨游宇宙 🌌</div>
+</div><script>
+      window.onload = function () {
+        const back = document.querySelector('.back');
+        const comment = document.querySelector('.comment');
+        const giscus = document.querySelector('.giscus');
+        const filterTime = document.querySelector('#filter-time');
+        const filterCategory = document.querySelector('#filter-category');
+        const pathname = window.location.pathname;
+
+        mediumZoom && mediumZoom(document.querySelectorAll('.post-content img'))
+
+        back && back.addEventListener('click', function () {
+          // to root
+          window.location.href = '/'
+        });
+        comment && comment.addEventListener('click', function () {
+          giscus.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        });
+        
+        if (pathname === '/') {
+          filterTime.classList.add('active');
+        } else if (pathname === '/categories') {
+          filterCategory.classList.add('active');
+        }
+
+        if (pathname === '/about/') {
+          const rectItemEl = document.querySelectorAll('.rect-item');
+          const tipEl = document.querySelector('.svg-tip')
+          tipEl.style.display = 'none'
+          for (let i = 0; i < rectItemEl.length; i++) {
+            const blogCount = rectItemEl[i].getAttribute('data-count')
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseover', function (e) {
+              const date = e.target.dataset.date
+              const count = e.target.dataset.count
+              const week = new Date(date).toLocaleString(
+                'default', { weekday: 'long' }
+              )
+              const tipStr = `
+                <div class="tip">
+                  <div class="item">日期：${date}，${week.replace('星期', '周')}</div>
+                  <div class="item">文章数：${count}</div>
+                </div>
+              `
+              tipEl.style.top = e.screenY - 210 + 'px'
+              tipEl.style.left = e.screenX - 65 + 'px'
+              tipEl.style.display = 'inherit'
+              tipEl.innerHTML = tipStr
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseout', function (e) {
+              const tipEl = document.querySelector('.svg-tip')
+              tipEl.style.display = 'none'
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('click', function (e) {
+              window.sessionStorage.setItem('filter-time', `d${e.target.dataset.date}`)
+              window.location.href = `/`
+            })
+          }
+        }
+        if (pathname === '/') {
+          const filterTime = window.sessionStorage.getItem('filter-time')
+          if (filterTime) {
+            const goEl = document.querySelector(`#${filterTime}`)
+            goEl.style.color = 'red'
+            goEl && goEl.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+            setTimeout(() => {
+              goEl.style.color = 'inherit'
+            }, 1500)
+            window.sessionStorage.removeItem('filter-time')
+          }
+        }
+      }
+    </script>
+  </body>
+
+</html>

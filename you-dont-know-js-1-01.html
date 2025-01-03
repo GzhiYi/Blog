@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icon/site.webmanifest">
+  <link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6428285898429073" crossorigin="anonymous"></script>
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>观后笔记-你不知道的JavaScript-上-01 | GzhiYi 的个人博客</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="观后笔记-你不知道的JavaScript-上-01" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="记录一些读书的小点，这些是在自己翻阅书本后觉得可能对自己有帮助的情况下所写下来的内容，并不适用于任何人理解和肯定。" />
+<meta property="og:description" content="记录一些读书的小点，这些是在自己翻阅书本后觉得可能对自己有帮助的情况下所写下来的内容，并不适用于任何人理解和肯定。" />
+<link rel="canonical" href="https://gzhiyi.top/you-dont-know-js-1-01" />
+<meta property="og:url" content="https://gzhiyi.top/you-dont-know-js-1-01" />
+<meta property="og:site_name" content="GzhiYi 的个人博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-09-16T21:10:58+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="观后笔记-你不知道的JavaScript-上-01" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-09-16T21:10:58+08:00","datePublished":"2021-09-16T21:10:58+08:00","description":"记录一些读书的小点，这些是在自己翻阅书本后觉得可能对自己有帮助的情况下所写下来的内容，并不适用于任何人理解和肯定。","headline":"观后笔记-你不知道的JavaScript-上-01","mainEntityOfPage":{"@type":"WebPage","@id":"https://gzhiyi.top/you-dont-know-js-1-01"},"url":"https://gzhiyi.top/you-dont-know-js-1-01"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://gzhiyi.top/feed.xml" title="GzhiYi 的个人博客" /><script async src="https://www.googletagmanager.com/gtag/js?id=G-KRRRY4XFPE"></script>
+<script>
+  window.dataLayer = window.dataLayer || []
+  function gtag() { dataLayer.push(arguments) }
+  gtag('js', new Date())
+
+  gtag('config', 'G-KRRRY4XFPE');
+</script><script async src="/assets/medium-zoom.min.js"></script>
+</head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><div style="float: left;">
+      <a class="site-title" rel="author" href="/">GzhiYi </a>
+      <span class="slogan">想遨游宇宙 🌌</span>
+    </div><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">关于</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <div class="flex justify-between">
+      <div class="back">
+        <img src="/assets/back.svg" alt="back"> 返回
+      </div>
+      <div class="comment">
+        <img src="/assets/comment.svg" alt="comment"> 评论
+      </div>
+    </div>
+    <h1 class="post-title p-name" itemprop="name headline">观后笔记-你不知道的JavaScript-上-01</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-09-16T21:10:58+08:00" itemprop="datePublished">2021-09-16 21:10
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>记录一些读书的小点，这些是在自己翻阅书本后觉得可能对自己有帮助的情况下所写下来的内容，并不适用于任何人理解和肯定。</p>
+
+<h3 id="自执行函数iife">自执行函数IIFE</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="nx">funName</span><span class="p">()</span> <span class="p">{})()</span>
+</code></pre></div></div>
+
+<p>具备将变量包裹起来的能力。另外可以当作函数调用并传递参数进去。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">GzhiYi</span><span class="dl">'</span>
+<span class="p">(</span><span class="kd">function</span> <span class="nx">IIFE</span><span class="p">(</span><span class="nb">global</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Not Me</span><span class="dl">'</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="c1">// Not me</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">global</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span> <span class="c1">// GzhiYi</span>
+<span class="p">})</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="c1">// GzhiYi</span>
+</code></pre></div></div>
+
+<h3 id="with和trycatch都可以创建一个块作用域">with和try/catch都可以创建一个块作用域</h3>
+
+<p>用with关键词从对象中跟创建出的作用域仅在with声明中而非外部作用域中有效。</p>
+
+<p>try/catch中的<code class="language-plaintext highlighter-rouge">catch</code>分句会创建一个块作用域，其中所声明的变量仅在catch内部有效。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="p">{</span>
+  <span class="c1">// trigger error!</span>
+<span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="c1">// error info</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="c1">// ReferenceError: err not found</span>
+</code></pre></div></div>
+
+<h3 id="没定义的变量rhs查询一定错误吗">没定义的变量RHS查询一定错误吗？</h3>
+
+<p>例子：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1</span>
+<span class="nx">a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">a</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="c1">// 2</span>
+
+<span class="c1">// 2</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="c1">// 你可能认为会输出2或者ReferenceError，实际上输出undefined</span>
+</code></pre></div></div>
+
+<p><strong>包括变量和函数在内的所有生命都会在任何代码被执行前被处理。</strong></p>
+
+<p>需要理解的是，<code class="language-plaintext highlighter-rouge">var b = 2</code>实际上是两个声明：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">b</span><span class="p">;</span>
+<span class="nx">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>所以，上面的两个代码片段会有以下处理：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1</span>
+<span class="kd">var</span> <span class="nx">a</span><span class="p">;</span> <span class="c1">// 声明</span>
+<span class="nx">a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 代码执行</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="c1">// 代码执行</span>
+
+<span class="c1">// 2</span>
+<span class="kd">var</span> <span class="nx">b</span><span class="p">;</span> <span class="c1">// 声明</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span> <span class="c1">// 代码执行</span>
+<span class="nx">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">// 代码执行</span>
+</code></pre></div></div>
+
+<p>解释的前提是必须要知道，声明都是需要在代码被执行前先被处理，这个过程就是<code class="language-plaintext highlighter-rouge">变量提升</code>。</p>
+
+<p>每一个作用域都被进行提升操作。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span> <span class="c1">// 报错误！！</span>
+<span class="nx">foo</span><span class="p">()</span>
+<span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">bar</span><span class="p">()</span> <span class="p">{}</span>
+</code></pre></div></div>
+<p>以上片段报错不是ReferenceError，而是TypeError：</p>
+
+<ol>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Uncaught TypeError: foo is not a function</code>
+类型错误，执行了不属于该类型的操作。</p>
+  </li>
+  <li>
+    <p>如果log的是bar，则<code class="language-plaintext highlighter-rouge">Uncaught ReferenceError: bar is not defined</code>
+引用错误，在当前作用域中找不到该变量。</p>
+  </li>
+</ol>
+
+<p>相当于被处理为：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">foo</span><span class="p">;</span>
+<span class="nx">foo</span><span class="p">()</span>
+<span class="nx">foo</span> <span class="o">=</span> <span class="nx">funciton</span> <span class="p">(){</span>
+  <span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="o">**</span><span class="nb">self</span><span class="o">**</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+  </div>
+
+  <script src="https://giscus.app/client.js"
+    data-repo="GzhiYi/blog"
+    data-repo-id="R_kgDOHTfM8w"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOHTfM884CPCdh"
+    data-mapping="og:title"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    data-theme="light_protanopia"
+    crossorigin="anonymous"
+    async>
+  </script><a class="u-url" href="/you-dont-know-js-1-01" hidden></a>
+</article>
+
+      </div>
+    </main><div class="footer">
+  <div class="slogan">想遨游宇宙 🌌</div>
+</div><script>
+      window.onload = function () {
+        const back = document.querySelector('.back');
+        const comment = document.querySelector('.comment');
+        const giscus = document.querySelector('.giscus');
+        const filterTime = document.querySelector('#filter-time');
+        const filterCategory = document.querySelector('#filter-category');
+        const pathname = window.location.pathname;
+
+        mediumZoom && mediumZoom(document.querySelectorAll('.post-content img'))
+
+        back && back.addEventListener('click', function () {
+          // to root
+          window.location.href = '/'
+        });
+        comment && comment.addEventListener('click', function () {
+          giscus.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        });
+        
+        if (pathname === '/') {
+          filterTime.classList.add('active');
+        } else if (pathname === '/categories') {
+          filterCategory.classList.add('active');
+        }
+
+        if (pathname === '/about/') {
+          const rectItemEl = document.querySelectorAll('.rect-item');
+          const tipEl = document.querySelector('.svg-tip')
+          tipEl.style.display = 'none'
+          for (let i = 0; i < rectItemEl.length; i++) {
+            const blogCount = rectItemEl[i].getAttribute('data-count')
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseover', function (e) {
+              const date = e.target.dataset.date
+              const count = e.target.dataset.count
+              const week = new Date(date).toLocaleString(
+                'default', { weekday: 'long' }
+              )
+              const tipStr = `
+                <div class="tip">
+                  <div class="item">日期：${date}，${week.replace('星期', '周')}</div>
+                  <div class="item">文章数：${count}</div>
+                </div>
+              `
+              tipEl.style.top = e.screenY - 210 + 'px'
+              tipEl.style.left = e.screenX - 65 + 'px'
+              tipEl.style.display = 'inherit'
+              tipEl.innerHTML = tipStr
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseout', function (e) {
+              const tipEl = document.querySelector('.svg-tip')
+              tipEl.style.display = 'none'
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('click', function (e) {
+              window.sessionStorage.setItem('filter-time', `d${e.target.dataset.date}`)
+              window.location.href = `/`
+            })
+          }
+        }
+        if (pathname === '/') {
+          const filterTime = window.sessionStorage.getItem('filter-time')
+          if (filterTime) {
+            const goEl = document.querySelector(`#${filterTime}`)
+            goEl.style.color = 'red'
+            goEl && goEl.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+            setTimeout(() => {
+              goEl.style.color = 'inherit'
+            }, 1500)
+            window.sessionStorage.removeItem('filter-time')
+          }
+        }
+      }
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icon/site.webmanifest">
+  <link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6428285898429073" crossorigin="anonymous"></script>
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>博客又双改了，现在使用 jekyll 进行部署 | GzhiYi 的个人博客</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="博客又双改了，现在使用 jekyll 进行部署" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="抛弃原有博客仓库，使用 jekyll" />
+<meta property="og:description" content="抛弃原有博客仓库，使用 jekyll" />
+<link rel="canonical" href="https://gzhiyi.top/blog2jekyll" />
+<meta property="og:url" content="https://gzhiyi.top/blog2jekyll" />
+<meta property="og:site_name" content="GzhiYi 的个人博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-05-13T10:44:52+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="博客又双改了，现在使用 jekyll 进行部署" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-05-13T10:44:52+08:00","datePublished":"2022-05-13T10:44:52+08:00","description":"抛弃原有博客仓库，使用 jekyll","headline":"博客又双改了，现在使用 jekyll 进行部署","mainEntityOfPage":{"@type":"WebPage","@id":"https://gzhiyi.top/blog2jekyll"},"url":"https://gzhiyi.top/blog2jekyll"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://gzhiyi.top/feed.xml" title="GzhiYi 的个人博客" /><script async src="https://www.googletagmanager.com/gtag/js?id=G-KRRRY4XFPE"></script>
+<script>
+  window.dataLayer = window.dataLayer || []
+  function gtag() { dataLayer.push(arguments) }
+  gtag('js', new Date())
+
+  gtag('config', 'G-KRRRY4XFPE');
+</script><script async src="/assets/medium-zoom.min.js"></script>
+</head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><div style="float: left;">
+      <a class="site-title" rel="author" href="/">GzhiYi </a>
+      <span class="slogan">想遨游宇宙 🌌</span>
+    </div><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">关于</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <div class="flex justify-between">
+      <div class="back">
+        <img src="/assets/back.svg" alt="back"> 返回
+      </div>
+      <div class="comment">
+        <img src="/assets/comment.svg" alt="comment"> 评论
+      </div>
+    </div>
+    <h1 class="post-title p-name" itemprop="name headline">博客又双改了，现在使用 jekyll 进行部署</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2022-05-13T10:44:52+08:00" itemprop="datePublished">2022-05-13 10:44
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="抛弃原有博客仓库使用-jekyll">抛弃原有博客仓库，使用 jekyll</h1>
+
+<p>原本使用的是基于 svelte 的 sapper “框架”写的博客。其实只看内容渲染的话还是可以的，seo 很好，页面打开速度也很不错。在看到一个新的评论模块后，想加入到页面上，无奈在引入 svelte 评论组件 giscus 的时候一直处于报错无法引入的状态，因此就想换了。</p>
+
+<p>sapper 写博客缺点是编译 markdown 内容会比较慢。个别操作还是不够细腻，因为一开始的目标仅仅是满足写博客的需求。</p>
+
+<h2 id="jekyll">jekyll</h2>
+
+<blockquote>
+  <p>注意下面代码都需要将 \% 更改为 % 才能正常工作</p>
+</blockquote>
+
+<p>jekyll 编译起来速度非常快。</p>
+
+<p>我在 M1 Pro 的 MacBook Pro 上编译本站所有博客时间快的惊人！</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Generating feed <span class="k">for </span>posts
+...done <span class="k">in </span>0.145698 seconds
+</code></pre></div></div>
+
+<p>代码目录非常简洁，个人修改页面内容也是非常简单方便。加上原本就用着的构建流程，整体替换下来基本上无痛。</p>
+
+<p>在对默认的 minima 主题修改个别样式和结构之后，也大致完成了整个博客的内容编写和部署流程了。主要增加了 giscus 评论、按分类和按时间排序文章、google analysis 统计、medium-zoom 图片预览效果。针对个人页面描述内容和一些样式的大修改，需要在后面构思好再处理。目标页面样式为简洁明了，至少需要看起来舒服。额外的不需要的功能不会再加入。</p>
+
+<h2 id="接入的一些功能">接入的一些功能</h2>
+
+<p>这里记一下接入一些功能时的要点，减少后续接入的问题。</p>
+
+<h3 id="giscus-评论">giscus 评论</h3>
+
+<p>这个评论插件和之前使用过的 gittalk 类似，但 giscus 利用了 github 比较新的 discussions 功能，而 gittalk 插件则是用到了仓库的 issues 模块。</p>
+
+<p>在 <code class="language-plaintext highlighter-rouge">_layout/post.html</code> 博客 content 下添加上从 giscus 生成的 script 代码片段即可。片段生成引导非常详细，基本上不会有出错，所以不赘述。</p>
+
+<h3 id="按分类和按时间排序文章">按分类和按时间排序文章</h3>
+
+<ol>
+  <li>
+    <p>按时间分组展示<br />
+  默认的排序为按时间倒序，博客的根目录 / 所呈现的就是按日期倒序展示的。这里在日期倒序的前提下增加按月份分组。<br />
+  将 <code class="language-plaintext highlighter-rouge">_layout/home.html</code> 相关遍历 <code class="language-plaintext highlighter-rouge">site.posts</code> 改为：</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code> {\% raw %}
+ ~~~html
+ {\% assign postsByDay = site.posts | group_by_exp:"post", "post.date | date: '%Y 年 %m 月 %d 日'" %}
+ {\% for day in postsByDay %}
+   <span class="nt">&lt;h3&gt;</span>（0）<span class="nt">&lt;/h3&gt;</span>
+   <span class="nt">&lt;ul&gt;</span>
+        
+   <span class="nt">&lt;/ul&gt;</span>
+      
+ {\% endfor %}
+ ~~~
+ {\% endraw %}
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>按分类展示：<br />
+  在 <code class="language-plaintext highlighter-rouge">_layout</code> 目录新建一个 <code class="language-plaintext highlighter-rouge">categories.html</code> 文件，内容和 <code class="language-plaintext highlighter-rouge">home.html</code> 基本一直，在博客渲染遍历代码上有所不同。</p>
+  </li>
+</ol>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {\% raw %}
+  ~~~html
+  {\% for cate in site.categories %}
+      <span class="nt">&lt;h3&gt;</span> (0)<span class="nt">&lt;/h3&gt;</span>
+      <span class="nt">&lt;ul&gt;</span>
+        
+      <span class="nt">&lt;/ul&gt;</span>
+  {\% endfor %}
+  ~~~
+  {\% endraw  %}
+</code></pre></div></div>
+
+<h3 id="medium-zoom-插件">medium-zoom 插件</h3>
+
+<p>提供和 medium 图片一样显示效果的插件。</p>
+
+<p>在 <code class="language-plaintext highlighter-rouge">_includes/head.html</code> 文件中添加 <code class="language-plaintext highlighter-rouge">medium.zoom.min.js</code> 脚本引入。脚本应该存放在 <code class="language-plaintext highlighter-rouge">assets</code> 目录下。</p>
+
+<p>在引入后需要初始化。初始化代码放在引入脚本下方。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">mediumZoom</span> <span class="o">&amp;&amp;</span> <span class="nx">mediumZoom</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">img</span><span class="dl">'</span><span class="p">))</span>
+    <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h2 id="更多">更多</h2>
+
+<p>如果还有疑惑，可以在下面的评论进行留言。评论需要 github 账号登录。或者，你也可以到这个博客的源码上查看一些细节，比如 actions 处理等等。</p>
+
+<p><a href="https://github.com/GzhiYi/blog">GzhiYi/blog</a></p>
+
+  </div>
+
+  <script src="https://giscus.app/client.js"
+    data-repo="GzhiYi/blog"
+    data-repo-id="R_kgDOHTfM8w"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOHTfM884CPCdh"
+    data-mapping="og:title"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    data-theme="light_protanopia"
+    crossorigin="anonymous"
+    async>
+  </script><a class="u-url" href="/blog2jekyll" hidden></a>
+</article>
+
+      </div>
+    </main><div class="footer">
+  <div class="slogan">想遨游宇宙 🌌</div>
+</div><script>
+      window.onload = function () {
+        const back = document.querySelector('.back');
+        const comment = document.querySelector('.comment');
+        const giscus = document.querySelector('.giscus');
+        const filterTime = document.querySelector('#filter-time');
+        const filterCategory = document.querySelector('#filter-category');
+        const pathname = window.location.pathname;
+
+        mediumZoom && mediumZoom(document.querySelectorAll('.post-content img'))
+
+        back && back.addEventListener('click', function () {
+          // to root
+          window.location.href = '/'
+        });
+        comment && comment.addEventListener('click', function () {
+          giscus.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        });
+        
+        if (pathname === '/') {
+          filterTime.classList.add('active');
+        } else if (pathname === '/categories') {
+          filterCategory.classList.add('active');
+        }
+
+        if (pathname === '/about/') {
+          const rectItemEl = document.querySelectorAll('.rect-item');
+          const tipEl = document.querySelector('.svg-tip')
+          tipEl.style.display = 'none'
+          for (let i = 0; i < rectItemEl.length; i++) {
+            const blogCount = rectItemEl[i].getAttribute('data-count')
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseover', function (e) {
+              const date = e.target.dataset.date
+              const count = e.target.dataset.count
+              const week = new Date(date).toLocaleString(
+                'default', { weekday: 'long' }
+              )
+              const tipStr = `
+                <div class="tip">
+                  <div class="item">日期：${date}，${week.replace('星期', '周')}</div>
+                  <div class="item">文章数：${count}</div>
+                </div>
+              `
+              tipEl.style.top = e.screenY - 210 + 'px'
+              tipEl.style.left = e.screenX - 65 + 'px'
+              tipEl.style.display = 'inherit'
+              tipEl.innerHTML = tipStr
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseout', function (e) {
+              const tipEl = document.querySelector('.svg-tip')
+              tipEl.style.display = 'none'
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('click', function (e) {
+              window.sessionStorage.setItem('filter-time', `d${e.target.dataset.date}`)
+              window.location.href = `/`
+            })
+          }
+        }
+        if (pathname === '/') {
+          const filterTime = window.sessionStorage.getItem('filter-time')
+          if (filterTime) {
+            const goEl = document.querySelector(`#${filterTime}`)
+            goEl.style.color = 'red'
+            goEl && goEl.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+            setTimeout(() => {
+              goEl.style.color = 'inherit'
+            }, 1500)
+            window.sessionStorage.removeItem('filter-time')
+          }
+        }
+      }
+    </script>
+  </body>
+
+</html>

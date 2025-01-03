@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icon/site.webmanifest">
+  <link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6428285898429073" crossorigin="anonymous"></script>
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>一次h5开发踩坑记录 | GzhiYi 的个人博客</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="一次h5开发踩坑记录" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="时间 这个h5开发时间是在国庆前两天，通过比较短的时间完成开发、设计稿还原以及上线。在这记一下踩过的一些小坑或者说是小技巧。" />
+<meta property="og:description" content="时间 这个h5开发时间是在国庆前两天，通过比较短的时间完成开发、设计稿还原以及上线。在这记一下踩过的一些小坑或者说是小技巧。" />
+<link rel="canonical" href="https://gzhiyi.top/h5-step" />
+<meta property="og:url" content="https://gzhiyi.top/h5-step" />
+<meta property="og:site_name" content="GzhiYi 的个人博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-10-15T20:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="一次h5开发踩坑记录" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2018-10-15T20:00:00+08:00","datePublished":"2018-10-15T20:00:00+08:00","description":"时间 这个h5开发时间是在国庆前两天，通过比较短的时间完成开发、设计稿还原以及上线。在这记一下踩过的一些小坑或者说是小技巧。","headline":"一次h5开发踩坑记录","mainEntityOfPage":{"@type":"WebPage","@id":"https://gzhiyi.top/h5-step"},"url":"https://gzhiyi.top/h5-step"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://gzhiyi.top/feed.xml" title="GzhiYi 的个人博客" /><script async src="https://www.googletagmanager.com/gtag/js?id=G-KRRRY4XFPE"></script>
+<script>
+  window.dataLayer = window.dataLayer || []
+  function gtag() { dataLayer.push(arguments) }
+  gtag('js', new Date())
+
+  gtag('config', 'G-KRRRY4XFPE');
+</script><script async src="/assets/medium-zoom.min.js"></script>
+</head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><div style="float: left;">
+      <a class="site-title" rel="author" href="/">GzhiYi </a>
+      <span class="slogan">想遨游宇宙 🌌</span>
+    </div><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">关于</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <div class="flex justify-between">
+      <div class="back">
+        <img src="/assets/back.svg" alt="back"> 返回
+      </div>
+      <div class="comment">
+        <img src="/assets/comment.svg" alt="comment"> 评论
+      </div>
+    </div>
+    <h1 class="post-title p-name" itemprop="name headline">一次h5开发踩坑记录</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-10-15T20:00:00+08:00" itemprop="datePublished">2018-10-15 20:00
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h3 id="时间">时间</h3>
+<p>这个h5开发时间是在国庆前两天，通过比较短的时间完成开发、设计稿还原以及上线。在这记一下踩过的一些小坑或者说是小技巧。</p>
+
+<h3 id="使用框架">使用框架</h3>
+
+<p>原本想直接了当用jQuery，毕竟用jQuery开发是真的快而且紧急情况可控。缺点是写起来会比较乱，维护也比较麻烦。但最后还是放弃，想尝试新的技术。最后试用了几套框架|库后，决定使用vux进行编写。
+<!--more--></p>
+<h3 id="vux">Vux</h3>
+<p><img src="https://user-images.githubusercontent.com/21136420/48887191-5af85100-ee69-11e8-84e9-fc534223e75b.png" alt="tim 20181015093748" /></p>
+
+<p>使用原因：</p>
+
+<ol>
+  <li>使用vue-cli构建，几乎不用配置其余东西，内建命令让开发和打包生产版十分便捷。</li>
+  <li>vux有大量组件而且github上有非常多的issue记录，遇到问题可以快速定位解决。</li>
+  <li>vue生态给力，写起来舒舒服服。</li>
+</ol>
+
+<h3 id="主要坑">主要坑</h3>
+
+<p>由于第一次用vux写h5，难免会遇到不少问题，不仅是框架本身的问题，还有其他业务上需要攻克的问题。就记录下踩过的坑：</p>
+
+<ul>
+  <li>background-image在部署的时候路径不对。</li>
+</ul>
+
+<p>修改vue-cli的build文件夹下的utils.js为如下：
+<img src="https://user-images.githubusercontent.com/21136420/48887225-7b281000-ee69-11e8-85a0-6e465667d9c4.png" alt="util" /></p>
+
+<p>这样在 CSS 中：background-image: url(“./assets/bg.jpg”)，不管是在开发环境下还是在生产环境下，背景图都可以读出来</p>
+
+<ul>
+  <li>怎么生成图片并在微信端支持长按保存图片？</li>
+</ul>
+
+<p>以前也做过类似的，但没做过微信支持长按保存图片的。首先当然是要用到将html转为canvas然后再考虑转为图片。</p>
+
+<ol>
+  <li>库：<a href="https://html2canvas.hertzen.com/documentation">html2canvas</a></li>
+  <li>用法非常简单，指定挂载的元素进行转化。</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">html2canvas</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">canvas</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">canvas</span><span class="p">);</span>    <span class="c1">// 这个是生成的canvas</span>
+    <span class="kd">const</span> <span class="nx">base64Code</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">toDataURL</span><span class="p">(</span><span class="dl">"</span><span class="s2">image/png</span><span class="dl">"</span><span class="p">);</span>    <span class="c1">//将生成的canvas通过api`toDataURL`转为base64格式图片。</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li>怎么保存图片？</li>
+</ul>
+
+<p>不是已经生成图片了吗？生成就可以可以保存了。没错，但是业务问题，在生成的图片上还要包含可点击的按钮和一个超链接。可以想到，可以将按钮和超链接定位到生成的图片上。可是存在这样的问题，不同的移动端呈现的结果可能不一致，这会直接导致页面显示出现问题，进而影响使用体验。这种覆盖的想法最后放弃了。</p>
+
+<p>最后的做法：将生成的图片的透明度设置为0覆盖到原本要渲染的元素上，然后提高可点击按钮的层级。
+<img src="https://user-images.githubusercontent.com/21136420/48887259-95fa8480-ee69-11e8-8564-ddbccc8f1e26.png" alt="tim 20181015100607" /></p>
+
+<ul>
+  <li>存在无法分享到朋友圈的问题</li>
+</ul>
+
+<p>微信浏览器唤起的分享菜单，存在点击分享到朋友圈出现卡死问题。
+排查过程： 在页面操作第一步和第二步都不会有这个问题，在生成图片的第三步就出现无法分享的问题。在想是不是生成图片太大了导致太卡顿了？在开发调试过程，打开vue开发工具查看第三步data的时候，发现非常卡顿。这样就可以认定是图片造成的卡顿了。</p>
+
+<p>最后找到的原因：canvas生成的base64编码的图片码十分长，直接导致vue处理的时候出现卡顿严重进而影响页面分享效果。最后的解决方案：将base64转为file上传，最后展示返回的url图片。</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">const</span> <span class="nx">base64Code</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">toDataURL</span><span class="p">(</span><span class="dl">"</span><span class="s2">image/png</span><span class="dl">"</span><span class="p">)</span>
+  <span class="c1">// 去掉url的头，并转换为byte。以下步骤生成JavaScript blob文件</span>
+  <span class="kd">const</span> <span class="nx">bytes</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">atob</span><span class="p">(</span><span class="nx">base64Code</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">,</span><span class="dl">'</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+  <span class="kd">const</span> <span class="nx">ab</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">ArrayBuffer</span><span class="p">(</span><span class="nx">bytes</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">ia</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Uint8Array</span><span class="p">(</span><span class="nx">ab</span><span class="p">)</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">ia</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="kd">let</span> <span class="nx">files</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="nx">blobToFile</span><span class="p">(</span><span class="k">new</span> <span class="nx">Blob</span><span class="p">([</span><span class="nx">ab</span><span class="p">],</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">png</span><span class="dl">'</span> <span class="p">}),</span> <span class="dl">'</span><span class="s1">post</span><span class="dl">'</span><span class="p">)</span>
+  <span class="kd">let</span> <span class="nx">formData</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FormData</span><span class="p">()</span>
+  <span class="nx">formData</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">file</span><span class="dl">"</span><span class="p">,</span> <span class="nx">files</span><span class="p">,</span> <span class="s2">`myPost-</span><span class="p">${</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">()}</span><span class="s2">.png`</span><span class="p">);</span>
+  <span class="nb">self</span><span class="p">.</span><span class="nx">$http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">fileUploadURL</span><span class="p">,</span> <span class="nx">formData</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">multipart/form-data</span><span class="dl">'</span>
+    <span class="p">}</span>
+  <span class="p">}).</span><span class="nx">then</span> <span class="p">(</span><span class="nx">uploadRes</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">uploadRes</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">code</span> <span class="o">===</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nb">self</span><span class="p">.</span><span class="nx">imageBase</span> <span class="o">=</span> <span class="nx">uploadRes</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">url</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+</code></pre></div></div>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// blob图片转为文件的函数</span>
+  <span class="nx">blobToFile</span> <span class="p">(</span><span class="nx">theBlob</span><span class="p">,</span> <span class="nx">fileName</span><span class="p">){</span>
+    <span class="nx">theBlob</span><span class="p">.</span><span class="nx">lastModifiedDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+    <span class="nx">theBlob</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">fileName</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">theBlob</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+<h3 id="成品">成品</h3>
+<p>虽然国庆过了，但是还是贴出来哈哈。
+<a href="http://xiaolu.ybj.com/wechat/html/gqyx/index.html">活动</a></p>
+
+  </div>
+
+  <script src="https://giscus.app/client.js"
+    data-repo="GzhiYi/blog"
+    data-repo-id="R_kgDOHTfM8w"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOHTfM884CPCdh"
+    data-mapping="og:title"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    data-theme="light_protanopia"
+    crossorigin="anonymous"
+    async>
+  </script><a class="u-url" href="/h5-step" hidden></a>
+</article>
+
+      </div>
+    </main><div class="footer">
+  <div class="slogan">想遨游宇宙 🌌</div>
+</div><script>
+      window.onload = function () {
+        const back = document.querySelector('.back');
+        const comment = document.querySelector('.comment');
+        const giscus = document.querySelector('.giscus');
+        const filterTime = document.querySelector('#filter-time');
+        const filterCategory = document.querySelector('#filter-category');
+        const pathname = window.location.pathname;
+
+        mediumZoom && mediumZoom(document.querySelectorAll('.post-content img'))
+
+        back && back.addEventListener('click', function () {
+          // to root
+          window.location.href = '/'
+        });
+        comment && comment.addEventListener('click', function () {
+          giscus.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        });
+        
+        if (pathname === '/') {
+          filterTime.classList.add('active');
+        } else if (pathname === '/categories') {
+          filterCategory.classList.add('active');
+        }
+
+        if (pathname === '/about/') {
+          const rectItemEl = document.querySelectorAll('.rect-item');
+          const tipEl = document.querySelector('.svg-tip')
+          tipEl.style.display = 'none'
+          for (let i = 0; i < rectItemEl.length; i++) {
+            const blogCount = rectItemEl[i].getAttribute('data-count')
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseover', function (e) {
+              const date = e.target.dataset.date
+              const count = e.target.dataset.count
+              const week = new Date(date).toLocaleString(
+                'default', { weekday: 'long' }
+              )
+              const tipStr = `
+                <div class="tip">
+                  <div class="item">日期：${date}，${week.replace('星期', '周')}</div>
+                  <div class="item">文章数：${count}</div>
+                </div>
+              `
+              tipEl.style.top = e.screenY - 210 + 'px'
+              tipEl.style.left = e.screenX - 65 + 'px'
+              tipEl.style.display = 'inherit'
+              tipEl.innerHTML = tipStr
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseout', function (e) {
+              const tipEl = document.querySelector('.svg-tip')
+              tipEl.style.display = 'none'
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('click', function (e) {
+              window.sessionStorage.setItem('filter-time', `d${e.target.dataset.date}`)
+              window.location.href = `/`
+            })
+          }
+        }
+        if (pathname === '/') {
+          const filterTime = window.sessionStorage.getItem('filter-time')
+          if (filterTime) {
+            const goEl = document.querySelector(`#${filterTime}`)
+            goEl.style.color = 'red'
+            goEl && goEl.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+            setTimeout(() => {
+              goEl.style.color = 'inherit'
+            }, 1500)
+            window.sessionStorage.removeItem('filter-time')
+          }
+        }
+      }
+    </script>
+  </body>
+
+</html>

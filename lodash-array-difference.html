@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icon/site.webmanifest">
+  <link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6428285898429073" crossorigin="anonymous"></script>
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>lodash数组中difference方法 | GzhiYi 的个人博客</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="lodash数组中difference方法" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Difference" />
+<meta property="og:description" content="Difference" />
+<link rel="canonical" href="https://gzhiyi.top/lodash-array-difference" />
+<meta property="og:url" content="https://gzhiyi.top/lodash-array-difference" />
+<meta property="og:site_name" content="GzhiYi 的个人博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-08-06T18:21:57+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="lodash数组中difference方法" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-08-06T18:21:57+08:00","datePublished":"2021-08-06T18:21:57+08:00","description":"Difference","headline":"lodash数组中difference方法","mainEntityOfPage":{"@type":"WebPage","@id":"https://gzhiyi.top/lodash-array-difference"},"url":"https://gzhiyi.top/lodash-array-difference"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://gzhiyi.top/feed.xml" title="GzhiYi 的个人博客" /><script async src="https://www.googletagmanager.com/gtag/js?id=G-KRRRY4XFPE"></script>
+<script>
+  window.dataLayer = window.dataLayer || []
+  function gtag() { dataLayer.push(arguments) }
+  gtag('js', new Date())
+
+  gtag('config', 'G-KRRRY4XFPE');
+</script><script async src="/assets/medium-zoom.min.js"></script>
+</head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><div style="float: left;">
+      <a class="site-title" rel="author" href="/">GzhiYi </a>
+      <span class="slogan">想遨游宇宙 🌌</span>
+    </div><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">关于</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <div class="flex justify-between">
+      <div class="back">
+        <img src="/assets/back.svg" alt="back"> 返回
+      </div>
+      <div class="comment">
+        <img src="/assets/comment.svg" alt="comment"> 评论
+      </div>
+    </div>
+    <h1 class="post-title p-name" itemprop="name headline">lodash数组中difference方法</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-08-06T18:21:57+08:00" itemprop="datePublished">2021-08-06 18:21
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h2 id="difference">Difference</h2>
+
+<p>创建一个具有唯一array值的数组，每个值不包含在其他给定的数组中。（注：即创建一个新数组，这个数组中的值，为第一个数字（array 参数）排除了给定数组中的值。）该方法使用SameValueZero做相等比较。结果值的顺序是由第一个数组中的顺序确定。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">_</span><span class="p">.</span><span class="nx">difference</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="c1">// [3, 1]</span>
+</code></pre></div></div>
+<h3 id="理解">理解</h3>
+
+<p>对这个用法，可以理解为抽出属于第一个参数而不属于第二个参数的值（找出右边数组中没有在左边数组内的）。</p>
+
+<p>其中有一个SamealueZero的匹配规则，大致的规则如下：
+例如比较x、y</p>
+<ol>
+  <li>如果x与y不同，返回false</li>
+  <li>如果x为数值，则
+    <ul>
+      <li>如果x是NaN，y也是NaN，返回true</li>
+      <li>如果x是-0，y是+0，返回true</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="源码">源码</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">difference</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="p">...</span><span class="nx">values</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">isArrayLikeObject</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span>
+  <span class="c1">// baseFlatten用于拍平数组</span>
+    <span class="p">?</span> <span class="nx">baseDifference</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">baseFlatten</span><span class="p">(</span><span class="nx">values</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">isArrayLikeObject</span><span class="p">,</span> <span class="kc">true</span><span class="p">))</span>
+    <span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>这函数调用的起飞阿，我分析lodash函数的代码，还得刨到底。</p>
+
+<h4 id="isarraylikeobject">isArrayLikeObject</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 这个函数和isArrayLike差不多，但它会另外的检查传入的value是否为object</span>
+<span class="c1">// 总之可以模糊的说用于判断是否是可迭代的类型</span>
+<span class="kd">function</span> <span class="nx">isArrayLikeObject</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">isObjectLike</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">isArrayLike</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
+<span class="p">}</span>
+
+
+<span class="c1">// 1 </span>
+<span class="c1">// 用以判断传入的值是否为对象类型，因为typeof null === 'object'，所以要增加一个判断</span>
+<span class="kd">function</span> <span class="nx">isObjectLike</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">typeof</span> <span class="nx">value</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">object</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!==</span> <span class="kc">null</span>
+<span class="p">}</span>
+
+<span class="c1">// 2</span>
+<span class="c1">// 由isLength判断value长度的方式来判断传入的value是否为ArrayLike</span>
+<span class="kd">function</span> <span class="nx">isArrayLike</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">value</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">value</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">function</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">isLength</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// 3</span>
+<span class="c1">// 判断传入的长度值是否有效！</span>
+<span class="c1">// 有效的条件：大于-1 并且 任意整数 并且是安全整数（能够准确区分两个不相同的值）</span>
+
+<span class="kd">function</span> <span class="nx">isLength</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">typeof</span> <span class="nx">value</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">number</span><span class="dl">'</span> <span class="o">&amp;&amp;</span>
+    <span class="nx">value</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">%</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">&lt;=</span> <span class="nx">MAX_SAFE_INTEGER</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="basedifference">baseDifference</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// iteratee在此（difference函数）调用默认为false</span>
+<span class="kd">function</span> <span class="nx">baseDifference</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">values</span><span class="p">,</span> <span class="nx">iteratee</span><span class="p">,</span> <span class="nx">comparator</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// arrayIncludes(array, value)</span>
+  <span class="c1">// 判断value是否在array中</span>
+  <span class="kd">let</span> <span class="nx">includes</span> <span class="o">=</span> <span class="nx">arrayIncludes</span>
+  <span class="kd">let</span> <span class="nx">isCommon</span> <span class="o">=</span> <span class="kc">true</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="kd">const</span> <span class="nx">valuesLength</span> <span class="o">=</span> <span class="nx">values</span><span class="p">.</span><span class="nx">length</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">array</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">result</span>
+  <span class="p">}</span>
+  <span class="c1">// 这几处暂时不需要理解</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">iteratee</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">values</span> <span class="o">=</span> <span class="nx">map</span><span class="p">(</span><span class="nx">values</span><span class="p">,</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">iteratee</span><span class="p">(</span><span class="nx">value</span><span class="p">))</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">comparator</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">includes</span> <span class="o">=</span> <span class="nx">arrayIncludesWith</span>
+    <span class="nx">isCommon</span> <span class="o">=</span> <span class="kc">false</span>
+  <span class="p">}</span>
+  <span class="c1">// lodash中该值定义为LARGE_ARRAY_SIZE = 200</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">values</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">LARGE_ARRAY_SIZE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// cacheHas这个函数用于判断某个key是否在cache中</span>
+    <span class="nx">includes</span> <span class="o">=</span> <span class="nx">cacheHas</span>
+    <span class="nx">isCommon</span> <span class="o">=</span> <span class="kc">false</span>
+    <span class="nx">values</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SetCache</span><span class="p">(</span><span class="nx">values</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="c1">// labeled statement</span>
+  <span class="c1">// 严格模式下不能使用 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/label</span>
+  <span class="c1">// 用于跳过某些遍历</span>
+
+  <span class="nl">outer</span><span class="p">:</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">value</span> <span class="k">of</span> <span class="nx">array</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">computed</span> <span class="o">=</span> <span class="nx">iteratee</span> <span class="o">==</span> <span class="kc">null</span> <span class="p">?</span> <span class="nx">value</span> <span class="p">:</span> <span class="nx">iteratee</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
+
+    <span class="nx">value</span> <span class="o">=</span> <span class="p">(</span><span class="nx">comparator</span> <span class="o">||</span> <span class="nx">value</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">?</span> <span class="nx">value</span> <span class="p">:</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isCommon</span> <span class="o">&amp;&amp;</span> <span class="nx">computed</span> <span class="o">===</span> <span class="nx">computed</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">valuesIndex</span> <span class="o">=</span> <span class="nx">valuesLength</span>
+      <span class="k">while</span> <span class="p">(</span><span class="nx">valuesIndex</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">values</span><span class="p">[</span><span class="nx">valuesIndex</span><span class="p">]</span> <span class="o">===</span> <span class="nx">computed</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">continue</span> <span class="nx">outer</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="nx">result</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">includes</span><span class="p">(</span><span class="nx">values</span><span class="p">,</span> <span class="nx">computed</span><span class="p">,</span> <span class="nx">comparator</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nx">result</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">result</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="扩展">扩展</h3>
+
+<h4 id="differencebyarray-values-iteratee_identity">differenceBy(array, [values], [iteratee=_.identity])</h4>
+
+<p>array和values都会经过iteratee这个迭代器执行后进行对比。</p>
+
+<h4 id="differencewitharray-values-comparator">differenceWith(array, [values], [comparator])</h4>
+
+<p>comparator是比较器。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">objects</span> <span class="o">=</span> <span class="p">[{</span> <span class="dl">'</span><span class="s1">x</span><span class="dl">'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="dl">'</span><span class="s1">y</span><span class="dl">'</span><span class="p">:</span> <span class="mi">2</span> <span class="p">},</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">x</span><span class="dl">'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="dl">'</span><span class="s1">y</span><span class="dl">'</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}];</span>
+ 
+<span class="nx">_</span><span class="p">.</span><span class="nx">differenceWith</span><span class="p">(</span><span class="nx">objects</span><span class="p">,</span> <span class="p">[{</span> <span class="dl">'</span><span class="s1">x</span><span class="dl">'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="dl">'</span><span class="s1">y</span><span class="dl">'</span><span class="p">:</span> <span class="mi">2</span> <span class="p">}],</span> <span class="nx">_</span><span class="p">.</span><span class="nx">isEqual</span><span class="p">);</span>
+<span class="c1">// =&gt; [{ 'x': 2, 'y': 1 }]</span>
+</code></pre></div></div>
+
+<p>需要注意，difference是找不同，所以是找出与<code class="language-plaintext highlighter-rouge">isEqual</code>比较器比较结果相反的数组项。</p>
+
+  </div>
+
+  <script src="https://giscus.app/client.js"
+    data-repo="GzhiYi/blog"
+    data-repo-id="R_kgDOHTfM8w"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOHTfM884CPCdh"
+    data-mapping="og:title"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    data-theme="light_protanopia"
+    crossorigin="anonymous"
+    async>
+  </script><a class="u-url" href="/lodash-array-difference" hidden></a>
+</article>
+
+      </div>
+    </main><div class="footer">
+  <div class="slogan">想遨游宇宙 🌌</div>
+</div><script>
+      window.onload = function () {
+        const back = document.querySelector('.back');
+        const comment = document.querySelector('.comment');
+        const giscus = document.querySelector('.giscus');
+        const filterTime = document.querySelector('#filter-time');
+        const filterCategory = document.querySelector('#filter-category');
+        const pathname = window.location.pathname;
+
+        mediumZoom && mediumZoom(document.querySelectorAll('.post-content img'))
+
+        back && back.addEventListener('click', function () {
+          // to root
+          window.location.href = '/'
+        });
+        comment && comment.addEventListener('click', function () {
+          giscus.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        });
+        
+        if (pathname === '/') {
+          filterTime.classList.add('active');
+        } else if (pathname === '/categories') {
+          filterCategory.classList.add('active');
+        }
+
+        if (pathname === '/about/') {
+          const rectItemEl = document.querySelectorAll('.rect-item');
+          const tipEl = document.querySelector('.svg-tip')
+          tipEl.style.display = 'none'
+          for (let i = 0; i < rectItemEl.length; i++) {
+            const blogCount = rectItemEl[i].getAttribute('data-count')
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseover', function (e) {
+              const date = e.target.dataset.date
+              const count = e.target.dataset.count
+              const week = new Date(date).toLocaleString(
+                'default', { weekday: 'long' }
+              )
+              const tipStr = `
+                <div class="tip">
+                  <div class="item">日期：${date}，${week.replace('星期', '周')}</div>
+                  <div class="item">文章数：${count}</div>
+                </div>
+              `
+              tipEl.style.top = e.screenY - 210 + 'px'
+              tipEl.style.left = e.screenX - 65 + 'px'
+              tipEl.style.display = 'inherit'
+              tipEl.innerHTML = tipStr
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseout', function (e) {
+              const tipEl = document.querySelector('.svg-tip')
+              tipEl.style.display = 'none'
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('click', function (e) {
+              window.sessionStorage.setItem('filter-time', `d${e.target.dataset.date}`)
+              window.location.href = `/`
+            })
+          }
+        }
+        if (pathname === '/') {
+          const filterTime = window.sessionStorage.getItem('filter-time')
+          if (filterTime) {
+            const goEl = document.querySelector(`#${filterTime}`)
+            goEl.style.color = 'red'
+            goEl && goEl.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+            setTimeout(() => {
+              goEl.style.color = 'inherit'
+            }, 1500)
+            window.sessionStorage.removeItem('filter-time')
+          }
+        }
+      }
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icon/site.webmanifest">
+  <link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6428285898429073" crossorigin="anonymous"></script>
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Git提交信息格式化（规范） | GzhiYi 的个人博客</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="Git提交信息格式化（规范）" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Git 提交信息格式" />
+<meta property="og:description" content="Git 提交信息格式" />
+<link rel="canonical" href="https://gzhiyi.top/git-commit-format" />
+<meta property="og:url" content="https://gzhiyi.top/git-commit-format" />
+<meta property="og:site_name" content="GzhiYi 的个人博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-08-08T06:05:05+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Git提交信息格式化（规范）" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-08-08T06:05:05+08:00","datePublished":"2021-08-08T06:05:05+08:00","description":"Git 提交信息格式","headline":"Git提交信息格式化（规范）","mainEntityOfPage":{"@type":"WebPage","@id":"https://gzhiyi.top/git-commit-format"},"url":"https://gzhiyi.top/git-commit-format"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://gzhiyi.top/feed.xml" title="GzhiYi 的个人博客" /><script async src="https://www.googletagmanager.com/gtag/js?id=G-KRRRY4XFPE"></script>
+<script>
+  window.dataLayer = window.dataLayer || []
+  function gtag() { dataLayer.push(arguments) }
+  gtag('js', new Date())
+
+  gtag('config', 'G-KRRRY4XFPE');
+</script><script async src="/assets/medium-zoom.min.js"></script>
+</head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><div style="float: left;">
+      <a class="site-title" rel="author" href="/">GzhiYi </a>
+      <span class="slogan">想遨游宇宙 🌌</span>
+    </div><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">关于</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <div class="flex justify-between">
+      <div class="back">
+        <img src="/assets/back.svg" alt="back"> 返回
+      </div>
+      <div class="comment">
+        <img src="/assets/comment.svg" alt="comment"> 评论
+      </div>
+    </div>
+    <h1 class="post-title p-name" itemprop="name headline">Git提交信息格式化（规范）</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-08-08T06:05:05+08:00" itemprop="datePublished">2021-08-08 06:05
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h2 id="git-提交信息格式">Git 提交信息格式</h2>
+
+<p>每一条提交的记录信息由<code class="language-plaintext highlighter-rouge">header</code>、<code class="language-plaintext highlighter-rouge">body</code>、<code class="language-plaintext highlighter-rouge">footer</code>组成。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;header&gt;
+&lt;BLANK LINE&gt;
+&lt;body&gt;
+&lt;BLANK LINE&gt;
+&lt;footer&gt;
+</code></pre></div></div>
+
+<p>header是强制性的，需要符合header的规则约束。</p>
+
+<p>除了“docs”类型的提交外，所有提交都必须使用body。当正文出现时，它必须至少有20个字符长，并且必须符合提交消息正文格式。</p>
+
+<p>footer是可选的。</p>
+
+<h3 id="header">header</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;type&gt;(&lt;scope&gt;): &lt;short summary&gt;
+  │       │             │
+  │       │             └─⫸ 没有大写，结尾不需要句号
+  │       │
+  │       └─⫸ Commit Scope: 内定
+  │
+  └─⫸ Commit Type: build|ci|docs|feat|fix|perf|refactor|test
+</code></pre></div></div>
+
+<p>⚠️ type、summary是强制性要求，scope是可选的。</p>
+
+<h4 id="type">type</h4>
+
+<p>必须是取下面之一:</p>
+
+<ul>
+  <li><strong>build</strong>: 修改的内容影响构建功能或者外部的依赖（例如：gulp、broccoli、npm）</li>
+  <li><strong>ci</strong>: 修改了CI配置和脚本（例如：Circle、BrowserStack、GitlabCI）</li>
+  <li><strong>docs</strong>: 文档修改</li>
+  <li><strong>feat</strong>: 新增功能</li>
+  <li><strong>fix</strong>: bug修复</li>
+  <li><strong>perf</strong>: 用于性能提升的修改</li>
+  <li><strong>refactor</strong>: 此修改既不是bug修复，也不是功能的新增</li>
+  <li><strong>test</strong>: 关乎测试相关的内容修改</li>
+</ul>
+
+<h4 id="scope">scope</h4>
+
+<p>可以理解为修改的作用范围，这一项是根据当前项目所决定的。可以自行确定。确定的规则是思考当前的修改到底影响的是哪一些模块。</p>
+
+<h4 id="summary">summary</h4>
+
+<p>简要概述。注意</p>
+
+<ol>
+  <li>使用的是现在时的语法，例如是“修改”，而不是“修改了”。</li>
+  <li>首字母不要大写，适用于英文。</li>
+  <li>句末不需要增加分号（<code class="language-plaintext highlighter-rouge">。</code>/<code class="language-plaintext highlighter-rouge">.</code>）。</li>
+</ol>
+
+<h3 id="body">body</h3>
+
+<p>和summary一样，使用的是现在时的语法，例如是“修改”，而不是“修改了”。</p>
+
+<p>在提交消息体中解释更改的原因。提交消息应该解释为什么要进行这个更改。可以包含旧内容和新内容的比较，用于辅助解释修改的影响。</p>
+
+<h3 id="footer">footer</h3>
+
+<p>页脚可以包含关于重大更新的内容，也是引用GitHub issue、Jira和其他链接。</p>
+
+<h3 id="例子">例子</h3>
+
+<p>查看<a href="https://github.com/angular/angular">Angular</a>源代码仓库，使用的提交规则清一色的符合上述情况。</p>
+
+<p>可以看到，提交信息的内容基本都是以动词开始。</p>
+
+  </div>
+
+  <script src="https://giscus.app/client.js"
+    data-repo="GzhiYi/blog"
+    data-repo-id="R_kgDOHTfM8w"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOHTfM884CPCdh"
+    data-mapping="og:title"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    data-theme="light_protanopia"
+    crossorigin="anonymous"
+    async>
+  </script><a class="u-url" href="/git-commit-format" hidden></a>
+</article>
+
+      </div>
+    </main><div class="footer">
+  <div class="slogan">想遨游宇宙 🌌</div>
+</div><script>
+      window.onload = function () {
+        const back = document.querySelector('.back');
+        const comment = document.querySelector('.comment');
+        const giscus = document.querySelector('.giscus');
+        const filterTime = document.querySelector('#filter-time');
+        const filterCategory = document.querySelector('#filter-category');
+        const pathname = window.location.pathname;
+
+        mediumZoom && mediumZoom(document.querySelectorAll('.post-content img'))
+
+        back && back.addEventListener('click', function () {
+          // to root
+          window.location.href = '/'
+        });
+        comment && comment.addEventListener('click', function () {
+          giscus.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        });
+        
+        if (pathname === '/') {
+          filterTime.classList.add('active');
+        } else if (pathname === '/categories') {
+          filterCategory.classList.add('active');
+        }
+
+        if (pathname === '/about/') {
+          const rectItemEl = document.querySelectorAll('.rect-item');
+          const tipEl = document.querySelector('.svg-tip')
+          tipEl.style.display = 'none'
+          for (let i = 0; i < rectItemEl.length; i++) {
+            const blogCount = rectItemEl[i].getAttribute('data-count')
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseover', function (e) {
+              const date = e.target.dataset.date
+              const count = e.target.dataset.count
+              const week = new Date(date).toLocaleString(
+                'default', { weekday: 'long' }
+              )
+              const tipStr = `
+                <div class="tip">
+                  <div class="item">日期：${date}，${week.replace('星期', '周')}</div>
+                  <div class="item">文章数：${count}</div>
+                </div>
+              `
+              tipEl.style.top = e.screenY - 210 + 'px'
+              tipEl.style.left = e.screenX - 65 + 'px'
+              tipEl.style.display = 'inherit'
+              tipEl.innerHTML = tipStr
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseout', function (e) {
+              const tipEl = document.querySelector('.svg-tip')
+              tipEl.style.display = 'none'
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('click', function (e) {
+              window.sessionStorage.setItem('filter-time', `d${e.target.dataset.date}`)
+              window.location.href = `/`
+            })
+          }
+        }
+        if (pathname === '/') {
+          const filterTime = window.sessionStorage.getItem('filter-time')
+          if (filterTime) {
+            const goEl = document.querySelector(`#${filterTime}`)
+            goEl.style.color = 'red'
+            goEl && goEl.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+            setTimeout(() => {
+              goEl.style.color = 'inherit'
+            }, 1500)
+            window.sessionStorage.removeItem('filter-time')
+          }
+        }
+      }
+    </script>
+  </body>
+
+</html>

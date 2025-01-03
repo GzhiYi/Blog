@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icon/site.webmanifest">
+  <link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6428285898429073" crossorigin="anonymous"></script>
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>理解一下vue的render方法 | GzhiYi 的个人博客</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="理解一下vue的render方法" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="我是一名 Web 前端工程师。热爱生活，热爱宇宙。" />
+<meta property="og:description" content="我是一名 Web 前端工程师。热爱生活，热爱宇宙。" />
+<link rel="canonical" href="https://gzhiyi.top/vue-render-source" />
+<meta property="og:url" content="https://gzhiyi.top/vue-render-source" />
+<meta property="og:site_name" content="GzhiYi 的个人博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-08-19T14:37:13+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="理解一下vue的render方法" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-08-19T14:37:13+08:00","datePublished":"2021-08-19T14:37:13+08:00","description":"我是一名 Web 前端工程师。热爱生活，热爱宇宙。","headline":"理解一下vue的render方法","mainEntityOfPage":{"@type":"WebPage","@id":"https://gzhiyi.top/vue-render-source"},"url":"https://gzhiyi.top/vue-render-source"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://gzhiyi.top/feed.xml" title="GzhiYi 的个人博客" /><script async src="https://www.googletagmanager.com/gtag/js?id=G-KRRRY4XFPE"></script>
+<script>
+  window.dataLayer = window.dataLayer || []
+  function gtag() { dataLayer.push(arguments) }
+  gtag('js', new Date())
+
+  gtag('config', 'G-KRRRY4XFPE');
+</script><script async src="/assets/medium-zoom.min.js"></script>
+</head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><div style="float: left;">
+      <a class="site-title" rel="author" href="/">GzhiYi </a>
+      <span class="slogan">想遨游宇宙 🌌</span>
+    </div><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">关于</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <div class="flex justify-between">
+      <div class="back">
+        <img src="/assets/back.svg" alt="back"> 返回
+      </div>
+      <div class="comment">
+        <img src="/assets/comment.svg" alt="comment"> 评论
+      </div>
+    </div>
+    <h1 class="post-title p-name" itemprop="name headline">理解一下vue的render方法</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-08-19T14:37:13+08:00" itemprop="datePublished">2021-08-19 14:37
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><img src="https://i.loli.net/2021/08/19/w6YcFmd1eJOA5oC.png" alt="属性未定义的错误提示" /></p>
+
+<p>上面提示会出现在我们没有在vue中定义该data却在模板中提到的时候。恰好是在render执行过程中出现的，所以可以借此理解一下vue的render函数。</p>
+
+<h3 id="render">render</h3>
+
+<p>render函数是vue实例中的一个私有方法，作用是通过<code class="language-plaintext highlighter-rouge">createElement</code>创建并返回虚拟dom(vnode)。翻看源码，该方法定义在<a href="https://github.com/vuejs/vue/blob/dev/src/core/instance/render.js">src/core/instance/render.js</a>中。</p>
+
+<p>位于<code class="language-plaintext highlighter-rouge">initRender</code>函数。在这函数里面找到_render的定义：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Vue</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">_render</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
+  <span class="c1">// ...</span>
+  <span class="c1">// 从options中拿到render函数</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">render</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">vm</span><span class="p">.</span><span class="nx">$options</span>
+
+  <span class="c1">// 通过call函数传入当前上下文</span>
+  <span class="nx">vnode</span> <span class="o">=</span> <span class="nx">render</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">vm</span><span class="p">.</span><span class="nx">_renderProxy</span><span class="p">,</span> <span class="nx">vm</span><span class="p">.</span><span class="nx">$createElement</span><span class="p">)</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="createelement">createElement</h3>
+
+<p>vm中的createElement在该函数上方有定义。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">vm</span><span class="p">.</span><span class="nx">_c</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">d</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">createElement</span><span class="p">(</span><span class="nx">vm</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">d</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
+<span class="nx">vm</span><span class="p">.</span><span class="nx">$createElement</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">d</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">createElement</span><span class="p">(</span><span class="nx">vm</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">d</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>可以知道，第一个私有函数_c挂在vm上是提供给编译器编译模版生成render函数。</p>
+
+<p>第二个直接定义在实例上，提供用于手写render方法。</p>
+
+<p>我们在vue中render函数是这么写的：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="nx">render</span><span class="p">(</span><span class="nx">createElement</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// do sth</span>
+    <span class="k">return</span> <span class="nx">createElement</span><span class="p">(</span>
+      <span class="c1">// vnode stuff</span>
+    <span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>这里的createElement就是在上方代码中定义的。</p>
+
+<p><strong>vnode的生成会替换render目标元素dom，所以不能把vue实例render到有内容的dom上。</strong></p>
+
+<h3 id="renderproxy">renderProxy</h3>
+
+<p>render.call函数的第一个参数是<code class="language-plaintext highlighter-rouge">vm._renderProxy</code>，在<code class="language-plaintext highlighter-rouge">init.js</code>中，有这两行代码在初始化周期等前执行：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">production</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">initProxy</span><span class="p">(</span><span class="nx">vm</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">vm</span><span class="p">.</span><span class="nx">_renderProxy</span> <span class="o">=</span> <span class="nx">vm</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>表示如果当前是开发环境，就执行initProxy，来看看initProxy的代码。initProxy位于<code class="language-plaintext highlighter-rouge">src/core/instance/proxy.js</code>中。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">initProxy</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">initProxy</span> <span class="p">(</span><span class="nx">vm</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// hasProxy是用于判断当前环境是否支持proxy/</span>
+  <span class="c1">// 支持的浏览器将直接调用new Proxy进行数据劫持</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">hasProxy</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// determine which proxy handler to use</span>
+    <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="nx">vm</span><span class="p">.</span><span class="nx">$options</span>
+    <span class="kd">const</span> <span class="nx">handlers</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">render</span> <span class="o">&amp;&amp;</span> <span class="nx">options</span><span class="p">.</span><span class="nx">render</span><span class="p">.</span><span class="nx">_withStripped</span>
+      <span class="p">?</span> <span class="nx">getHandler</span>
+      <span class="p">:</span> <span class="nx">hasHandler</span>
+    <span class="nx">vm</span><span class="p">.</span><span class="nx">_renderProxy</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Proxy</span><span class="p">(</span><span class="nx">vm</span><span class="p">,</span> <span class="nx">handlers</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">vm</span><span class="p">.</span><span class="nx">_renderProxy</span> <span class="o">=</span> <span class="nx">vm</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>如果在支持的浏览器中，<code class="language-plaintext highlighter-rouge">new Proxy</code>的第二个参数会传入<code class="language-plaintext highlighter-rouge">hasHandler</code>，查看hasHandler定义:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">hasHandler</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">has</span> <span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">has</span> <span class="o">=</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">target</span>
+    <span class="kd">const</span> <span class="nx">isAllowed</span> <span class="o">=</span> <span class="nx">allowedGlobals</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="o">||</span>
+      <span class="p">(</span><span class="k">typeof</span> <span class="nx">key</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">string</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">key</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">_</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">(</span><span class="nx">key</span> <span class="k">in</span> <span class="nx">target</span><span class="p">.</span><span class="nx">$data</span><span class="p">))</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">has</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">isAllowed</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">key</span> <span class="k">in</span> <span class="nx">target</span><span class="p">.</span><span class="nx">$data</span><span class="p">)</span> <span class="nx">warnReservedPrefix</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span>
+      <span class="k">else</span> <span class="nx">warnNonPresent</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">has</span> <span class="o">||</span> <span class="o">!</span><span class="nx">isAllowed</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy">Proxy</a>，在这里就是对vm的data进行数据劫持，也就是代理。</p>
+
+<p>handler又一个has方法，这是针对 in 操作符的代理方法，has内部主要检查target中是否有key属性，如果有就继续执行，如果没有，就回到文章开头的那个错误提示啦。</p>
+
+<h3 id="总结">总结</h3>
+
+<p>在<code class="language-plaintext highlighter-rouge">init.js</code>中定义了<code class="language-plaintext highlighter-rouge">initRender</code>以及<code class="language-plaintext highlighter-rouge">_renderProxy</code>方法。在<code class="language-plaintext highlighter-rouge">render.js</code>找到render函数定义，主要描述了对用户手写的render函数进行处理生成vnode，中间将vnode设置到vm实例中(vm.$vnode)，最后返回并执行后续的操作。</p>
+
+<p><strong>Vue版本：<a href="https://github.com/vuejs/vue/archive/refs/tags/v2.6.14.zip">2.6.14</a></strong></p>
+
+  </div>
+
+  <script src="https://giscus.app/client.js"
+    data-repo="GzhiYi/blog"
+    data-repo-id="R_kgDOHTfM8w"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOHTfM884CPCdh"
+    data-mapping="og:title"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    data-theme="light_protanopia"
+    crossorigin="anonymous"
+    async>
+  </script><a class="u-url" href="/vue-render-source" hidden></a>
+</article>
+
+      </div>
+    </main><div class="footer">
+  <div class="slogan">想遨游宇宙 🌌</div>
+</div><script>
+      window.onload = function () {
+        const back = document.querySelector('.back');
+        const comment = document.querySelector('.comment');
+        const giscus = document.querySelector('.giscus');
+        const filterTime = document.querySelector('#filter-time');
+        const filterCategory = document.querySelector('#filter-category');
+        const pathname = window.location.pathname;
+
+        mediumZoom && mediumZoom(document.querySelectorAll('.post-content img'))
+
+        back && back.addEventListener('click', function () {
+          // to root
+          window.location.href = '/'
+        });
+        comment && comment.addEventListener('click', function () {
+          giscus.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        });
+        
+        if (pathname === '/') {
+          filterTime.classList.add('active');
+        } else if (pathname === '/categories') {
+          filterCategory.classList.add('active');
+        }
+
+        if (pathname === '/about/') {
+          const rectItemEl = document.querySelectorAll('.rect-item');
+          const tipEl = document.querySelector('.svg-tip')
+          tipEl.style.display = 'none'
+          for (let i = 0; i < rectItemEl.length; i++) {
+            const blogCount = rectItemEl[i].getAttribute('data-count')
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseover', function (e) {
+              const date = e.target.dataset.date
+              const count = e.target.dataset.count
+              const week = new Date(date).toLocaleString(
+                'default', { weekday: 'long' }
+              )
+              const tipStr = `
+                <div class="tip">
+                  <div class="item">日期：${date}，${week.replace('星期', '周')}</div>
+                  <div class="item">文章数：${count}</div>
+                </div>
+              `
+              tipEl.style.top = e.screenY - 210 + 'px'
+              tipEl.style.left = e.screenX - 65 + 'px'
+              tipEl.style.display = 'inherit'
+              tipEl.innerHTML = tipStr
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseout', function (e) {
+              const tipEl = document.querySelector('.svg-tip')
+              tipEl.style.display = 'none'
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('click', function (e) {
+              window.sessionStorage.setItem('filter-time', `d${e.target.dataset.date}`)
+              window.location.href = `/`
+            })
+          }
+        }
+        if (pathname === '/') {
+          const filterTime = window.sessionStorage.getItem('filter-time')
+          if (filterTime) {
+            const goEl = document.querySelector(`#${filterTime}`)
+            goEl.style.color = 'red'
+            goEl && goEl.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+            setTimeout(() => {
+              goEl.style.color = 'inherit'
+            }, 1500)
+            window.sessionStorage.removeItem('filter-time')
+          }
+        }
+      }
+    </script>
+  </body>
+
+</html>

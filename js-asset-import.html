@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icon/site.webmanifest">
+  <link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6428285898429073" crossorigin="anonymous"></script>
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>JS引入资源的一点总结 | GzhiYi 的个人博客</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="JS引入资源的一点总结" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="JS引入的时候放在哪比较好呢？" />
+<meta property="og:description" content="JS引入的时候放在哪比较好呢？" />
+<link rel="canonical" href="https://gzhiyi.top/js-asset-import" />
+<meta property="og:url" content="https://gzhiyi.top/js-asset-import" />
+<meta property="og:site_name" content="GzhiYi 的个人博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-09-28T20:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="JS引入资源的一点总结" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2019-09-28T20:00:00+08:00","datePublished":"2019-09-28T20:00:00+08:00","description":"JS引入的时候放在哪比较好呢？","headline":"JS引入资源的一点总结","mainEntityOfPage":{"@type":"WebPage","@id":"https://gzhiyi.top/js-asset-import"},"url":"https://gzhiyi.top/js-asset-import"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://gzhiyi.top/feed.xml" title="GzhiYi 的个人博客" /><script async src="https://www.googletagmanager.com/gtag/js?id=G-KRRRY4XFPE"></script>
+<script>
+  window.dataLayer = window.dataLayer || []
+  function gtag() { dataLayer.push(arguments) }
+  gtag('js', new Date())
+
+  gtag('config', 'G-KRRRY4XFPE');
+</script><script async src="/assets/medium-zoom.min.js"></script>
+</head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><div style="float: left;">
+      <a class="site-title" rel="author" href="/">GzhiYi </a>
+      <span class="slogan">想遨游宇宙 🌌</span>
+    </div><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">关于</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <div class="flex justify-between">
+      <div class="back">
+        <img src="/assets/back.svg" alt="back"> 返回
+      </div>
+      <div class="comment">
+        <img src="/assets/comment.svg" alt="comment"> 评论
+      </div>
+    </div>
+    <h1 class="post-title p-name" itemprop="name headline">JS引入资源的一点总结</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2019-09-28T20:00:00+08:00" itemprop="datePublished">2019-09-28 20:00
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h2 id="js引入的时候放在哪比较好呢">JS引入的时候放在哪比较好呢？</h2>
+
+<p>很常见的情况是把script放在body右闭合标签的上方，都是这样加载不阻塞页面解析和渲染，达到最优的效果。见得多，用的也多，我比较想理解下其中原因。</p>
+
+<h2 id="浏览器渲染">浏览器渲染</h2>
+
+<p>在知道放在哪最好之前，需要知道下浏览器渲染的过程。有以下的步骤：</p>
+
+<ul>
+  <li>处理文档中的标签并构建DOM（Document Object Model）树。</li>
+  <li>处理文档中的css并构建CSSOM（CSS Object Model）树。</li>
+  <li>合并DOM和CSSOM为一个渲染树。</li>
+  <li>处理渲染树没一个节点的布局。</li>
+  <li>最后将没一个节点渲染（绘制）到浏览器上。</li>
+</ul>
+
+<h3 id="阻塞渲染css和javascript">阻塞渲染：CSS和JavaScript</h3>
+
+<p>浏览器资源阻塞是一个常见的问题。要知道，资源在大多数浏览器上都是并行加载的，这种情况下，当Html文档被javascript阻塞时，Html文档会终止构建，但仍会<code class="language-plaintext highlighter-rouge">识别阻塞脚本后面的资源，进行预加载</code>。有以下要点需要注意：</p>
+
+<ul>
+  <li>css加载不会阻塞dom树解析，但会阻塞dom树渲染。</li>
+  <li>浏览器dom构建会在遇到script标签的时候暂停，直到script内的脚本执行完毕。</li>
+  <li>CSSOM在构建的时候，JavaScript的执行会暂停，直到CSSOM准备就绪。</li>
+</ul>
+
+<p>以上正好说明了，我该把js脚本放在哪😄。我们就得出这样的原则以加快文档构建渲染：</p>
+
+<ol>
+  <li>CSS优先渲染。将css放在JavaScript资源之上，也就是普遍的放在 &lt; head &gt; 标签内。</li>
+  <li>为减少script脚本对dom构建的影响，应该把script尽可能的放到最后（文档底部）。</li>
+</ol>
+
+<h2 id="defer和async">defer和async</h2>
+
+<p>script标签的这两个属性，均是为解决上面问题的。defer和async的使用有所不同。
+<code class="language-plaintext highlighter-rouge">defer</code>：DOM元素的加载和脚本的 ** 加载 ** 异步执行。但是脚本的执行需要在所有dom元素解析完成之后，在<code class="language-plaintext highlighter-rouge">DOMContentLoaded</code>事件触发之前执行。
+<code class="language-plaintext highlighter-rouge">async</code>：DOM元素的加载和脚本的加载 ** 以及执行 ** 异步执行。</p>
+
+<p><img src="https://user-images.githubusercontent.com/21136420/65817605-0ae1dc00-e23c-11e9-890b-e70207d371b6.jpeg" alt="284aec5bb7f16b3ef4e7482110c5ddbb_articlex" /></p>
+
+<ul>
+  <li>无async和defer的时候，dom渲染被脚本<del>加载以及执行</del>所中断。</li>
+  <li>defer的时候，dom渲染未被阻塞，但脚本执行将会到最后。这个特性可以对需求有所利用。</li>
+  <li>async的时候，dom渲染和脚本加载和执行异步。</li>
+</ul>
+
+<h2 id="有时候要用到动态引入">有时候要用到动态引入？</h2>
+
+<p>统计脚本，广告脚本这类第三方嵌入脚本会在文档底部引入脚本文件。但都是以js生成script标签的形式进行动态引入。
+  先来看下百度统计脚本是怎么引入的：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">hm</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">script</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">hm</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://hm.baidu.com/hm.js?10dbf7bc9ad86276329db7b</span><span class="dl">"</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="dl">"</span><span class="s2">script</span><span class="dl">"</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">hm</span><span class="p">,</span> <span class="nx">s</span><span class="p">);</span>
+  <span class="p">})();</span>
+</code></pre></div></div>
+<p>这就是动态创建script标签进行引入的方式。那么为什么要这样引入而不是直接:</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"source_url"</span> <span class="na">async</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+<p>** 其实，这既不是自执行函数的问题，也不是阻塞渲染的问题。是为了防止用户把脚本放置在文档不规范的地方导致文档被阻塞，并不是所有的脚本嵌入用户都知道这个脚本应该嵌入在哪的。而这样动态引入就可以避免这样的问题。**</p>
+
+  </div>
+
+  <script src="https://giscus.app/client.js"
+    data-repo="GzhiYi/blog"
+    data-repo-id="R_kgDOHTfM8w"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOHTfM884CPCdh"
+    data-mapping="og:title"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    data-theme="light_protanopia"
+    crossorigin="anonymous"
+    async>
+  </script><a class="u-url" href="/js-asset-import" hidden></a>
+</article>
+
+      </div>
+    </main><div class="footer">
+  <div class="slogan">想遨游宇宙 🌌</div>
+</div><script>
+      window.onload = function () {
+        const back = document.querySelector('.back');
+        const comment = document.querySelector('.comment');
+        const giscus = document.querySelector('.giscus');
+        const filterTime = document.querySelector('#filter-time');
+        const filterCategory = document.querySelector('#filter-category');
+        const pathname = window.location.pathname;
+
+        mediumZoom && mediumZoom(document.querySelectorAll('.post-content img'))
+
+        back && back.addEventListener('click', function () {
+          // to root
+          window.location.href = '/'
+        });
+        comment && comment.addEventListener('click', function () {
+          giscus.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        });
+        
+        if (pathname === '/') {
+          filterTime.classList.add('active');
+        } else if (pathname === '/categories') {
+          filterCategory.classList.add('active');
+        }
+
+        if (pathname === '/about/') {
+          const rectItemEl = document.querySelectorAll('.rect-item');
+          const tipEl = document.querySelector('.svg-tip')
+          tipEl.style.display = 'none'
+          for (let i = 0; i < rectItemEl.length; i++) {
+            const blogCount = rectItemEl[i].getAttribute('data-count')
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseover', function (e) {
+              const date = e.target.dataset.date
+              const count = e.target.dataset.count
+              const week = new Date(date).toLocaleString(
+                'default', { weekday: 'long' }
+              )
+              const tipStr = `
+                <div class="tip">
+                  <div class="item">日期：${date}，${week.replace('星期', '周')}</div>
+                  <div class="item">文章数：${count}</div>
+                </div>
+              `
+              tipEl.style.top = e.screenY - 210 + 'px'
+              tipEl.style.left = e.screenX - 65 + 'px'
+              tipEl.style.display = 'inherit'
+              tipEl.innerHTML = tipStr
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseout', function (e) {
+              const tipEl = document.querySelector('.svg-tip')
+              tipEl.style.display = 'none'
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('click', function (e) {
+              window.sessionStorage.setItem('filter-time', `d${e.target.dataset.date}`)
+              window.location.href = `/`
+            })
+          }
+        }
+        if (pathname === '/') {
+          const filterTime = window.sessionStorage.getItem('filter-time')
+          if (filterTime) {
+            const goEl = document.querySelector(`#${filterTime}`)
+            goEl.style.color = 'red'
+            goEl && goEl.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+            setTimeout(() => {
+              goEl.style.color = 'inherit'
+            }, 1500)
+            window.sessionStorage.removeItem('filter-time')
+          }
+        }
+      }
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icon/site.webmanifest">
+  <link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6428285898429073" crossorigin="anonymous"></script>
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>博客评论更改为valine并增加评论推送 | GzhiYi 的个人博客</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="博客评论更改为valine并增加评论推送" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="通过一点时间的使用，发现gitalk可以解决静态博客评论问题，是挺方便的，但综合考虑下，存在以下两个缺点：" />
+<meta property="og:description" content="通过一点时间的使用，发现gitalk可以解决静态博客评论问题，是挺方便的，但综合考虑下，存在以下两个缺点：" />
+<link rel="canonical" href="https://gzhiyi.top/valine-and-notifications" />
+<meta property="og:url" content="https://gzhiyi.top/valine-and-notifications" />
+<meta property="og:site_name" content="GzhiYi 的个人博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-29T20:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="博客评论更改为valine并增加评论推送" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2020-06-29T20:00:00+08:00","datePublished":"2020-06-29T20:00:00+08:00","description":"通过一点时间的使用，发现gitalk可以解决静态博客评论问题，是挺方便的，但综合考虑下，存在以下两个缺点：","headline":"博客评论更改为valine并增加评论推送","mainEntityOfPage":{"@type":"WebPage","@id":"https://gzhiyi.top/valine-and-notifications"},"url":"https://gzhiyi.top/valine-and-notifications"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://gzhiyi.top/feed.xml" title="GzhiYi 的个人博客" /><script async src="https://www.googletagmanager.com/gtag/js?id=G-KRRRY4XFPE"></script>
+<script>
+  window.dataLayer = window.dataLayer || []
+  function gtag() { dataLayer.push(arguments) }
+  gtag('js', new Date())
+
+  gtag('config', 'G-KRRRY4XFPE');
+</script><script async src="/assets/medium-zoom.min.js"></script>
+</head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><div style="float: left;">
+      <a class="site-title" rel="author" href="/">GzhiYi </a>
+      <span class="slogan">想遨游宇宙 🌌</span>
+    </div><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">关于</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <div class="flex justify-between">
+      <div class="back">
+        <img src="/assets/back.svg" alt="back"> 返回
+      </div>
+      <div class="comment">
+        <img src="/assets/comment.svg" alt="comment"> 评论
+      </div>
+    </div>
+    <h1 class="post-title p-name" itemprop="name headline">博客评论更改为valine并增加评论推送</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2020-06-29T20:00:00+08:00" itemprop="datePublished">2020-06-29 20:00
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>通过一点时间的使用，发现gitalk可以解决静态博客评论问题，是挺方便的，但综合考虑下，存在以下两个缺点：</p>
+
+<ol>
+  <li>需要github账号登录。</li>
+  <li>访问非常慢。</li>
+</ol>
+
+<p>有意间，发现一个评论插件很适合静态博客植入：<a href="https://valine.js.org/">Valine</a>。</p>
+
+<p>新样式</p>
+
+<p><img src="https://i.loli.net/2020/06/29/RiSBpcyAQD1kXCN.jpg" alt="style" /></p>
+
+<p>新评论模块默认很清新，和我当前的样式较为符合，只做了一点点的样式覆盖。</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* valine 样式覆盖 */</span>
+<span class="nc">.v</span><span class="o">[</span><span class="nt">data-class</span><span class="o">=</span><span class="nt">v</span><span class="o">]</span> <span class="nc">.vwrap</span> <span class="p">{</span>
+	<span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="p">,</span> <span class="m">62</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0.1</span><span class="p">)</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.v</span><span class="o">[</span><span class="nt">data-class</span><span class="o">=</span><span class="nt">v</span><span class="o">]</span> <span class="nc">.vwrap</span> <span class="nc">.vheader</span> <span class="nc">.vinput</span> <span class="p">{</span>
+	<span class="nl">border-bottom</span><span class="p">:</span> <span class="nb">none</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.v</span><span class="o">[</span><span class="nt">data-class</span><span class="o">=</span><span class="nt">v</span><span class="o">]</span> <span class="nc">.txt-right</span> <span class="p">{</span>
+	<span class="nl">display</span><span class="p">:</span> <span class="nb">none</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="推送">推送</h2>
+
+<p>在valine的文档中，有提到可以用一个扩展的valine-admin以实现评论通知功能。我在leancloud尝试了发现比较麻烦。外加之前使用GitHub Actions用到了一个推送服务实现了在action成功之后推送部署成功的通知到手机上。那是不是可以通过下面的思路去实现评论推送呢？</p>
+
+<blockquote>
+  <p><a href="https://push.techulus.com/">PUSH注册</a>注册后使用免费的plan，可以每月100条推送限额。要推送到手机，只需要调用提供的接口还有下载一个手机APP就好了。</p>
+</blockquote>
+
+<p>要知道，做到推送到手机，只需要POST下面的接口：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://push.techulus.com/api/v1/notify/<span class="o">{</span>YOU API KEY<span class="o">}</span>?title<span class="o">=</span>Push by Techulus&amp;body<span class="o">=</span>This is your first push notification
+</code></pre></div></div>
+
+<ol>
+  <li>在评论接口POST请求之后，在lean端通过类似拦截/触发的方法调用推送接口。</li>
+  <li>在网页端拦截POST请求，在评论发出之后，在调用推送接口。</li>
+</ol>
+
+<p>在查看对应文档之后，第一种方式我找不到可行的入口。我想确定数据库入库的逻辑在哪处理的也找不到，所以采用第二种方法。</p>
+
+<h2 id="拦截评论请求">拦截评论请求</h2>
+
+<ol>
+  <li>博客引入ajax-hook全局拦截请求</li>
+</ol>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/ajax-hook@2.0.3/dist/ajaxhook.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>在ajax-hook实例上，处理onRequest钩子。</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">ah</span><span class="p">.</span><span class="nx">proxy</span><span class="p">({</span>
+         <span class="c1">//请求发起前进入</span>
+         <span class="na">onRequest</span><span class="p">:</span> <span class="p">(</span><span class="nx">config</span><span class="p">,</span> <span class="nx">handler</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+             <span class="k">if</span> <span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">url</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="dl">'</span><span class="s1">classes/Comment</span><span class="dl">'</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">config</span><span class="p">.</span><span class="nx">method</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+                 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">请求发起前</span><span class="dl">'</span><span class="p">,</span> <span class="nx">config</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span>
+                 <span class="nx">fetch</span><span class="p">(</span>
+                     <span class="s2">`https://push.techulus.com/api/v1/notify/</span><span class="p">${</span><span class="nx">YOU</span> <span class="nx">API</span> <span class="nx">KEY</span><span class="p">}</span><span class="s2">?title=</span><span class="p">${</span><span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span> <span class="o">||</span> <span class="dl">'</span><span class="s1">文章</span><span class="dl">'</span><span class="p">}</span><span class="s2">有新回复&amp;body=</span><span class="p">${</span><span class="nx">config</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">)}</span><span class="s2">`</span><span class="p">,</span>
+                     <span class="p">{</span>
+                         <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+                         <span class="na">mode</span><span class="p">:</span> <span class="dl">'</span><span class="s1">cors</span><span class="dl">'</span><span class="p">,</span>
+                         <span class="na">headers</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span>
+                             <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+                         <span class="p">})</span>
+                     <span class="p">}</span>
+                 <span class="p">)</span>
+             <span class="p">}</span>
+             <span class="nx">handler</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
+         <span class="p">},</span>
+         <span class="c1">//请求发生错误时进入，比如超时；注意，不包括http状态码错误，如404仍然会认为请求成功</span>
+         <span class="na">onError</span><span class="p">:</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">handler</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                 <span class="nx">handler</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+         <span class="p">},</span>
+         <span class="c1">//请求成功后进入</span>
+         <span class="na">onResponse</span><span class="p">:</span> <span class="p">(</span><span class="nx">response</span><span class="p">,</span> <span class="nx">handler</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                 <span class="nx">handler</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+         <span class="p">}</span>
+     <span class="p">})</span>
+</code></pre></div>    </div>
+
+    <p>更多关于ajax-hook的文档，参阅：<a href="https://github.com/wendux/Ajax-hook">ajax-hook</a></p>
+  </li>
+</ol>
+
+<h2 id="缺点提示">缺点提示</h2>
+
+<p>第一种方式可以很好的保护推送的API KEY，因为有限额，暴露后可以随意调用。第二种比较简单易行。不过，反正push服务免费的话，也不会有损失。如果push服务付费就不要用第二种方法了。</p>
+
+<p>完成以上操作就可以收到评论推送啦，还是很方便的。如果有更好的免费push服务提供的，可以评论留言，我会很快看到的。</p>
+
+  </div>
+
+  <script src="https://giscus.app/client.js"
+    data-repo="GzhiYi/blog"
+    data-repo-id="R_kgDOHTfM8w"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOHTfM884CPCdh"
+    data-mapping="og:title"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    data-theme="light_protanopia"
+    crossorigin="anonymous"
+    async>
+  </script><a class="u-url" href="/valine-and-notifications" hidden></a>
+</article>
+
+      </div>
+    </main><div class="footer">
+  <div class="slogan">想遨游宇宙 🌌</div>
+</div><script>
+      window.onload = function () {
+        const back = document.querySelector('.back');
+        const comment = document.querySelector('.comment');
+        const giscus = document.querySelector('.giscus');
+        const filterTime = document.querySelector('#filter-time');
+        const filterCategory = document.querySelector('#filter-category');
+        const pathname = window.location.pathname;
+
+        mediumZoom && mediumZoom(document.querySelectorAll('.post-content img'))
+
+        back && back.addEventListener('click', function () {
+          // to root
+          window.location.href = '/'
+        });
+        comment && comment.addEventListener('click', function () {
+          giscus.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        });
+        
+        if (pathname === '/') {
+          filterTime.classList.add('active');
+        } else if (pathname === '/categories') {
+          filterCategory.classList.add('active');
+        }
+
+        if (pathname === '/about/') {
+          const rectItemEl = document.querySelectorAll('.rect-item');
+          const tipEl = document.querySelector('.svg-tip')
+          tipEl.style.display = 'none'
+          for (let i = 0; i < rectItemEl.length; i++) {
+            const blogCount = rectItemEl[i].getAttribute('data-count')
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseover', function (e) {
+              const date = e.target.dataset.date
+              const count = e.target.dataset.count
+              const week = new Date(date).toLocaleString(
+                'default', { weekday: 'long' }
+              )
+              const tipStr = `
+                <div class="tip">
+                  <div class="item">日期：${date}，${week.replace('星期', '周')}</div>
+                  <div class="item">文章数：${count}</div>
+                </div>
+              `
+              tipEl.style.top = e.screenY - 210 + 'px'
+              tipEl.style.left = e.screenX - 65 + 'px'
+              tipEl.style.display = 'inherit'
+              tipEl.innerHTML = tipStr
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('mouseout', function (e) {
+              const tipEl = document.querySelector('.svg-tip')
+              tipEl.style.display = 'none'
+            })
+            blogCount !== '0' && rectItemEl[i].addEventListener('click', function (e) {
+              window.sessionStorage.setItem('filter-time', `d${e.target.dataset.date}`)
+              window.location.href = `/`
+            })
+          }
+        }
+        if (pathname === '/') {
+          const filterTime = window.sessionStorage.getItem('filter-time')
+          if (filterTime) {
+            const goEl = document.querySelector(`#${filterTime}`)
+            goEl.style.color = 'red'
+            goEl && goEl.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+            setTimeout(() => {
+              goEl.style.color = 'inherit'
+            }, 1500)
+            window.sessionStorage.removeItem('filter-time')
+          }
+        }
+      }
+    </script>
+  </body>
+
+</html>
